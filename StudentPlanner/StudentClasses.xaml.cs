@@ -49,7 +49,7 @@ namespace StudentPlanner
             }
 
             string time = HourBox.Text + ":" +  SecondBox.Text + " " + TimeBox.Text;
-
+            
             course.Classname = className.Text;
             course.Profname = profName.Text;
             course.Profemail = profEmail.Text;
