@@ -24,12 +24,13 @@ namespace StudentPlanner
         {
             InitializeComponent();
             this.Title = "Student Planner";
-            this.WindowState = WindowState.Maximized;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            //add function to read in file with class info
         }
 
         private void close_Click(object sender, RoutedEventArgs e)//closes the main window
         {
-            MessageBox.Show("App is closing");
+            MessageBox.Show("Application shutdown.");
             this.Close();
         }
 
