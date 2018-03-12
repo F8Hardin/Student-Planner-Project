@@ -7,7 +7,17 @@
         mc:Ignorable="d"
         Title="StudentAssignments" Height="450" Width="800">
     <Grid Background="ForestGreen">
-        <ComboBox x:Name="Classbox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="Classbox" HorizontalAlignment="Left" Margin="348,33,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListView x:Name="viewAssignmentList" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="333">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Assignment Title" Width="115" DisplayMemberBinding="{Binding AssignName}"/>
+                    <GridViewColumn Header="Class" Width="115" DisplayMemberBinding="{Binding ClassName}"/>
+                    <GridViewColumn Header="Due Date" Width="115" DisplayMemberBinding="{Binding DueDate}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="addassign" Content="Add Assignment" HorizontalAlignment="Left" Margin="348,168,0,0" VerticalAlignment="Top" Width="100" Click="add_click"/>
 
     </Grid>
 </Window>

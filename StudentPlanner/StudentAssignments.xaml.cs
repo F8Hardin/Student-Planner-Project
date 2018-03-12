@@ -19,6 +19,8 @@ namespace StudentPlanner
     /// </summary>
     public partial class StudentAssignments : Window
     {
+        public List<Assignment> MyAssignments { get; set; } = new List<Assignment>();
+
         public StudentAssignments()
         {
             InitializeComponent();
@@ -42,6 +44,19 @@ namespace StudentPlanner
                     Classbox.Items.Add(className);
                 }
             }
+        }
+
+        private void add_click(object sender, RoutedEventArgs e)
+        {
+            Assignment homework = new Assignment();
+            homework.ClassName = Classbox.Text;
+            homework.DueDate = "ok";
+            homework.AssignName = "ok";
+
+            Classbox.Text = "";
+
+            viewAssignmentList.Items.Add(homework);
+            MyAssignments.Add(homework);
         }
     }
 }

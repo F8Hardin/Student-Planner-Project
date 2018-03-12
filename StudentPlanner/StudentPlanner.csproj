@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assignment.cs" />
     <Compile Include="Classinfo.cs" />
     <Compile Include="StudentAssignments.xaml.cs">
       <DependentUpon>StudentAssignments.xaml</DependentUpon>
