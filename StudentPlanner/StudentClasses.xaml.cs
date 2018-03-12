@@ -172,7 +172,7 @@ namespace StudentPlanner
             }
 
             MessageBox.Show("Add class after changes have been made.");
-
+            
             Classinfo course = (Classinfo)viewClassList.SelectedItems[0];
 
             className.Text = course.Classname;
