@@ -27,9 +27,7 @@ namespace StudentPlanner
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
             this.Title = "Your classes";
-
             Box_Setup();
             open_from_file();
         }
@@ -67,7 +65,7 @@ namespace StudentPlanner
 
             viewClassList.Items.Add(course);
             MyClasses.Add(course);
-
+            
             className.Text = "";
             profName.Text = "";
             profEmail.Text = "";
@@ -202,6 +200,7 @@ namespace StudentPlanner
             TimeBox.Text = time;
 
             viewClassList.Items.Remove(course);
+            MyClasses.Remove(course);
         }
     }
 }

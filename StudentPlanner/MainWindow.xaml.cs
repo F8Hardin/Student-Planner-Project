@@ -39,8 +39,14 @@ namespace StudentPlanner
 
         private void classes_Click(object sender, RoutedEventArgs e)//opens the window to display classes
         {
-            StudentClasses studentC = new StudentClasses();
-            studentC.ShowDialog();
+            StudentClasses student = new StudentClasses();
+            student.ShowDialog();
+        }
+
+        private void assignments_click(object sender, RoutedEventArgs e)
+        {
+            StudentAssignments student = new StudentAssignments();
+            student.ShowDialog();
         }
     }
 }
