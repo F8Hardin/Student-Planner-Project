@@ -8,9 +8,8 @@
         Title="MainWindow" Height="500" Width="700">
 
     <Grid Background="DarkBlue" Margin="0,0,-6.6,-0.2">
-        <Calendar HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="169" Width="188"/>
-        <Button x:Name="close" Content="Close Window" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="86" Click="close_Click"/>
-        <Button x:Name="classes" Content="View Classes" HorizontalAlignment="Left" Margin="203,42,0,0" VerticalAlignment="Top" Width="75" Click="classes_Click"/>
+        <Button x:Name="close" Content="Close Window" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="86" Click="close_Click"/>
+        <Button x:Name="classes" Content="View Classes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="86" Click="classes_Click"/>
 
     </Grid>
 </Window>

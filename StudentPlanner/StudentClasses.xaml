@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentPlanner"
         mc:Ignorable="d"
-        Title="StudentClasses" Height="350" Width="775">
+        Title="StudentClasses" Height="355" Width="775">
     <Grid Background="BlueViolet">
         <ListView x:Name="viewClassList" HorizontalAlignment="Left" Height="301" Margin="10,10,0,0" VerticalAlignment="Top" Width="450" ItemsSource="{Binding MyClasses}">
             <ListView.View>
@@ -18,7 +18,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="addclass" Content="Add Class" HorizontalAlignment="Left" Margin="486,118,0,0" VerticalAlignment="Top" Width="75" Click="addclass_Click"/>
-        <Button x:Name="save" Content="Save and Exit" HorizontalAlignment="Left" Margin="684,292,0,0" VerticalAlignment="Top" Width="75" Click="save_Click" RenderTransformOrigin="-2.907,-7.042"/>
+        <Button x:Name="save" Content="Save and Exit" HorizontalAlignment="Left" Margin="669,292,0,0" VerticalAlignment="Top" Width="75" Click="save_Click" RenderTransformOrigin="-2.907,-7.042"/>
         <TextBox x:Name="className" HorizontalAlignment="Left" Height="23" Margin="619,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" />
         <TextBox x:Name="profName" HorizontalAlignment="Left" Height="23" Margin="619,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
         <TextBlock HorizontalAlignment="Left" Margin="465,36,0,0" TextWrapping="Wrap" Text="Enter Professor Name" VerticalAlignment="Top" FontSize="15"/>
@@ -30,9 +30,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="465,88,0,0" TextWrapping="Wrap" Text="Select Class Time" VerticalAlignment="Top" FontSize="15" RenderTransformOrigin="2.996,2.68"/>
         <ComboBox x:Name="HourBox" HorizontalAlignment="Left" Margin="585,89,0,0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="2.553,-0.045"/>
         <TextBlock HorizontalAlignment="Left" Margin="585,112,0,0" TextWrapping="Wrap" Text="Hour" VerticalAlignment="Top" RenderTransformOrigin="0.197,6.438"/>
-        <ComboBox x:Name="SecondBox" HorizontalAlignment="Left" Margin="653,88,0,0" VerticalAlignment="Top" Width="55"/>
+        <ComboBox x:Name="MinuteBox" HorizontalAlignment="Left" Margin="653,88,0,0" VerticalAlignment="Top" Width="55"/>
         <TextBlock HorizontalAlignment="Left" Margin="653,111,0,0" TextWrapping="Wrap" Text="Seconds" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="645,91,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontSize="15"/>
         <Button Content="Delete Selected Class" HorizontalAlignment="Left" Margin="465,292,0,0" VerticalAlignment="Top" Width="118" Click="delete_Click"/>
+        <Button Content="Edit Selected Class" HorizontalAlignment="Left" Margin="465,268,0,0" VerticalAlignment="Top" Width="118" Click="edit_Click"/>
     </Grid>
 </Window>

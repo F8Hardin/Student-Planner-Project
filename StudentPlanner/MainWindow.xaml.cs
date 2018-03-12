@@ -30,8 +30,11 @@ namespace StudentPlanner
 
         private void close_Click(object sender, RoutedEventArgs e)//closes the main window
         {
-            MessageBox.Show("Application shutdown.");
-            this.Close();
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit the applicaiton?", "Warning", MessageBoxButton.OKCancel);
+            if(result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
         }
 
         private void classes_Click(object sender, RoutedEventArgs e)//opens the window to display classes
