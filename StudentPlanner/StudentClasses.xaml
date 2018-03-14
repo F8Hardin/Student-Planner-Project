@@ -31,7 +31,7 @@
         <ComboBox x:Name="HourBox" HorizontalAlignment="Left" Margin="585,89,0,0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="2.553,-0.045"/>
         <TextBlock HorizontalAlignment="Left" Margin="585,112,0,0" TextWrapping="Wrap" Text="Hour" VerticalAlignment="Top" RenderTransformOrigin="0.197,6.438"/>
         <ComboBox x:Name="MinuteBox" HorizontalAlignment="Left" Margin="653,88,0,0" VerticalAlignment="Top" Width="55"/>
-        <TextBlock HorizontalAlignment="Left" Margin="653,111,0,0" TextWrapping="Wrap" Text="Seconds" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="653,111,0,0" TextWrapping="Wrap" Text="Minutes" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="645,91,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontSize="15"/>
         <Button Content="Delete Selected Class" HorizontalAlignment="Left" Margin="465,292,0,0" VerticalAlignment="Top" Width="118" Click="delete_Click"/>
         <Button Content="Edit Selected Class" HorizontalAlignment="Left" Margin="465,268,0,0" VerticalAlignment="Top" Width="118" Click="edit_Click"/>
