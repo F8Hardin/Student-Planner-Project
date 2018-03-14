@@ -29,7 +29,7 @@ namespace StudentPlanner
             open_from_file();
         }
 
-        private void open_from_file()
+        private void open_from_file() //reads the class names from a file, allowing the user to select a class from the combobox when creating an assignment
         {
             using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentClassInfo.txt"))
             {
@@ -51,9 +51,10 @@ namespace StudentPlanner
             Assignment homework = new Assignment();
             homework.ClassName = Classbox.Text;
             homework.DueDate = "ok";
-            homework.AssignName = "ok";
+            homework.AssignName = Assigntitle.Text;
 
             Classbox.Text = "";
+            Assigntitle.Text = "";
 
             viewAssignmentList.Items.Add(homework);
             MyAssignments.Add(homework);
