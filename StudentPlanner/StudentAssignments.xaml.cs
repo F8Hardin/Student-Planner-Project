@@ -57,12 +57,14 @@ namespace StudentPlanner
 
             homework.DueDate = date;
             homework.AssignName = Assigntitle.Text;
+            homework.Notes = notes.Text;
 
             Classbox.Text = "";
             Assigntitle.Text = "";
             daybox.Text = "";
             monthbox.Text = "";
             yearbox.Text = "";
+            notes.Text = "";
 
             viewAssignmentList.Items.Add(homework);
             MyAssignments.Add(homework);
@@ -87,7 +89,7 @@ namespace StudentPlanner
             {
                 foreach (var Assignment in MyAssignments)
                 {
-                    file.WriteLine("{0}\r\n{1}\r\n{2}", Assignment.AssignName, Assignment.ClassName, Assignment.DueDate);
+                    file.WriteLine("{0}\r\n{1}\r\n{2}\r\n{3}", Assignment.AssignName, Assignment.Notes, Assignment.ClassName, Assignment.DueDate);
                 }
                 file.Close();
             }
@@ -113,8 +115,8 @@ namespace StudentPlanner
                 return;
             }
 
-            Assignment assign = (Assignment)viewAssignmentList.SelectedItems[0];
-            MessageBox.Show("Assignment Name: " + assign.AssignName + "\nCourse Title: " + assign.ClassName + "\nDue Date: " + assign.DueDate);
+            Assignment homework = (Assignment)viewAssignmentList.SelectedItems[0];
+            MessageBox.Show("Assignment Name: " + homework.AssignName + "\nCourse Title: " + homework.ClassName + "\nDue Date: " + homework.DueDate + "\nAdditional Notes: " + homework.Notes);
         }
 
         private void open_assignments_file()
@@ -128,6 +130,8 @@ namespace StudentPlanner
                     Assignment homework = new Assignment();
 
                     homework.AssignName = line;
+                    line = file.ReadLine();
+                    homework.Notes = line;
                     line = file.ReadLine();
                     homework.ClassName = line;
                     line = file.ReadLine();
