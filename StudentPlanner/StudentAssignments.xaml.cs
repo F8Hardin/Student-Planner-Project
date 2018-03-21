@@ -19,17 +19,19 @@ namespace StudentPlanner
     /// </summary>
     public partial class StudentAssignments : Window
     {
-        public List<Assignment> MyAssignments { get; set; } = new List<Assignment>();
+        public List<Assignment> MyAssignments { get; set; } = new List<Assignment>(); //list to store assignments
 
         public StudentAssignments()
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Title = "Your Assignments";
-            open_from_file();
+            open_classes_file();
+            open_assignments_file();
+            Box_Setup();
         }
 
-        private void open_from_file() //reads the class names from a file, allowing the user to select a class from the combobox when creating an assignment
+        private void open_classes_file() //reads the class names from a file, allowing the user to select a class from the combobox when creating an assignment
         {
             using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentClassInfo.txt"))
             {
@@ -46,18 +48,95 @@ namespace StudentPlanner
             }
         }
 
-        private void add_click(object sender, RoutedEventArgs e)
+        private void add_click(object sender, RoutedEventArgs e) //adds the assignments to the list and the listview
         {
             Assignment homework = new Assignment();
             homework.ClassName = Classbox.Text;
-            homework.DueDate = "ok";
+
+            string date = monthbox.Text + "/" + daybox.Text + "/" + yearbox.Text;
+
+            homework.DueDate = date;
             homework.AssignName = Assigntitle.Text;
 
             Classbox.Text = "";
             Assigntitle.Text = "";
+            daybox.Text = "";
+            monthbox.Text = "";
+            yearbox.Text = "";
 
             viewAssignmentList.Items.Add(homework);
             MyAssignments.Add(homework);
+        }
+
+        private void Box_Setup() //sets up the comboboxes
+        {
+            for(int i = 1; i < 13; i++)
+            {
+                monthbox.Items.Add(i);
+            }
+
+            for(int i = 1; i < 32; i++)
+            {
+                daybox.Items.Add(i);
+            }
+        }
+
+        private void save_to_file() //saves the assignments to a file
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
+            {
+                foreach (var Assignment in MyAssignments)
+                {
+                    file.WriteLine("{0}\r\n{1}\r\n{2}", Assignment.AssignName, Assignment.ClassName, Assignment.DueDate);
+                }
+                file.Close();
+            }
+        }
+
+        private void save_exit_Click(object sender, RoutedEventArgs e) //calls the save function when clicked
+        {
+            save_to_file();
+
+            MessageBoxResult result = MessageBox.Show("Assignments saved. Are you sure you want to exit?", "Important Message", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+            this.Close();
+        }
+
+        private void view_Click(object sender, RoutedEventArgs e) //allows the user to see all the information related to an assignment
+        {
+            if(viewAssignmentList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No assignment selected.");
+                return;
+            }
+
+            Assignment assign = (Assignment)viewAssignmentList.SelectedItems[0];
+            MessageBox.Show("Assignment Name: " + assign.AssignName + "\nCourse Title: " + assign.ClassName + "\nDue Date: " + assign.DueDate);
+        }
+
+        private void open_assignments_file()
+        {
+            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
+            {
+                string line;
+
+                while((line = file.ReadLine()) != null)
+                {
+                    Assignment homework = new Assignment();
+
+                    homework.AssignName = line;
+                    line = file.ReadLine();
+                    homework.ClassName = line;
+                    line = file.ReadLine();
+                    homework.DueDate = line;
+
+                    MyAssignments.Add(homework);
+                    viewAssignmentList.Items.Add(homework);
+                }
+            }
         }
     }
 }
