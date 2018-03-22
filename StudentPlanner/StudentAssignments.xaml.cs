@@ -19,7 +19,7 @@ namespace StudentPlanner
     /// </summary>
     public partial class StudentAssignments : Window
     {
-        public List<Assignment> MyAssignments { get; set; } = new List<Assignment>(); //list to store assignments
+        public List<Assignment> MyAssignments { get; set; } = new List<Assignment>(); //list to store assignments //ASSIGNMENTS NEED TO CHECK IF THERE COURSE HAS BEEN DELETED WHEN THEY ARE BEING READ IN, SO ANY ASSIGNMENTS ARE DELETED IF THE CLASS IS DELETED
 
         public StudentAssignments()
         {

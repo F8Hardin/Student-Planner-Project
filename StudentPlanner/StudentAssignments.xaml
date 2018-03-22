@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentPlanner"
         mc:Ignorable="d"
-        Title="StudentAssignments" Height="450" Width="500">
+        Title="StudentAssignments" Height="450" Width="525">
     <Grid Background="ForestGreen">
-        <ComboBox x:Name="Classbox" HorizontalAlignment="Left" Margin="348,29,0,0" VerticalAlignment="Top" Width="120"/>
-        <ListView x:Name="viewAssignmentList" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="333">
+        <ComboBox x:Name="Classbox" HorizontalAlignment="Left" Margin="363,29,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListView x:Name="viewAssignmentList" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="348">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Assignment Title" Width="115" DisplayMemberBinding="{Binding AssignName}"/>
@@ -17,21 +17,21 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="addassign" Content="Add Assignment" HorizontalAlignment="Left" Margin="348,341,0,0" VerticalAlignment="Top" Width="100" Click="add_click" Height="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="348,10,0,0" TextWrapping="Wrap" Text="Select Course" FontSize="15" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="348,56,0,0" TextWrapping="Wrap" Text="Assignment Title" FontSize="15" VerticalAlignment="Top"/>
-        <TextBox x:Name="Assigntitle" HorizontalAlignment="Left" Height="23" Margin="348,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="348,104,0,0" TextWrapping="Wrap" Text="Due Date" VerticalAlignment="Top" FontSize="15" RenderTransformOrigin="0.496,1.243"/>
-        <ComboBox x:Name="monthbox" HorizontalAlignment="Left" Margin="398,129,0,0" VerticalAlignment="Top" Width="40"/>
-        <ComboBox x:Name="daybox" HorizontalAlignment="Left" Margin="398,156,0,0" VerticalAlignment="Top" Width="40"/>
-        <TextBox x:Name="yearbox" HorizontalAlignment="Left" Height="23" Margin="398,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60"/>
-        <TextBlock HorizontalAlignment="Left" Margin="373,156,0,0" TextWrapping="Wrap" Text="Day" VerticalAlignment="Top" RenderTransformOrigin="3.213,0.621"/>
-        <TextBlock HorizontalAlignment="Left" Margin="358,129,0,0" TextWrapping="Wrap" Text="Month" VerticalAlignment="Top" RenderTransformOrigin="0.682,-6.473"/>
-        <TextBlock HorizontalAlignment="Left" Margin="371,183,0,0" TextWrapping="Wrap" Text="Year" VerticalAlignment="Top"/>
-        <Button x:Name="save_exit" Content="Save and Exit" HorizontalAlignment="Left" Margin="348,391,0,0" VerticalAlignment="Top" Width="75" Click="save_exit_Click"/>
-        <Button x:Name="view" Content="View Assignment Info" HorizontalAlignment="Left" Margin="348,366,0,0" VerticalAlignment="Top" Width="127" Height="20" Click="view_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="348,211,0,0" TextWrapping="Wrap" Text="Assignment Notes" VerticalAlignment="Top" FontSize="15"/>
-        <TextBox x:Name="notes" HorizontalAlignment="Left" Height="100" Margin="348,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127"/>
+        <Button x:Name="addassign" Content="Add Assignment" HorizontalAlignment="Left" Margin="363,341,0,0" VerticalAlignment="Top" Width="100" Click="add_click" Height="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,12,0,0" TextWrapping="Wrap" Text="Select Course" FontSize="15" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,56,0,0" TextWrapping="Wrap" Text="Assignment Title" FontSize="15" VerticalAlignment="Top"/>
+        <TextBox x:Name="Assigntitle" HorizontalAlignment="Left" Height="23" Margin="363,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,104,0,0" TextWrapping="Wrap" Text="Due Date" VerticalAlignment="Top" FontSize="15" RenderTransformOrigin="0.496,1.243"/>
+        <ComboBox x:Name="monthbox" HorizontalAlignment="Left" Margin="408,129,0,0" VerticalAlignment="Top" Width="40"/>
+        <ComboBox x:Name="daybox" HorizontalAlignment="Left" Margin="408,156,0,0" VerticalAlignment="Top" Width="40"/>
+        <TextBox x:Name="yearbox" HorizontalAlignment="Left" Height="23" Margin="408,184,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60"/>
+        <TextBlock HorizontalAlignment="Left" Margin="382,156,0,0" TextWrapping="Wrap" Text="Day" VerticalAlignment="Top" RenderTransformOrigin="3.213,0.621"/>
+        <TextBlock HorizontalAlignment="Left" Margin="368,129,0,0" TextWrapping="Wrap" Text="Month" VerticalAlignment="Top" RenderTransformOrigin="0.682,-6.473"/>
+        <TextBlock HorizontalAlignment="Left" Margin="381,184,0,0" TextWrapping="Wrap" Text="Year" VerticalAlignment="Top"/>
+        <Button x:Name="save_exit" Content="Save and Exit" HorizontalAlignment="Left" Margin="363,391,0,0" VerticalAlignment="Top" Width="75" Click="save_exit_Click"/>
+        <Button x:Name="view" Content="View Assignment Info" HorizontalAlignment="Left" Margin="363,366,0,0" VerticalAlignment="Top" Width="127" Height="20" Click="view_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,212,0,0" TextWrapping="Wrap" Text="Assignment Notes" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox x:Name="notes" HorizontalAlignment="Left" Height="100" Margin="363,237,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127"/>
 
     </Grid>
 </Window>
