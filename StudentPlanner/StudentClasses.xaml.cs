@@ -134,7 +134,10 @@ namespace StudentPlanner
             MinuteBox.Items.Add("00");
             for (int i = 1; i < 61; i++)
             {
-                MinuteBox.Items.Add(i);
+                if (i < 10)
+                    MinuteBox.Items.Add("0" + i);
+                else
+                    MinuteBox.Items.Add(i);
             }
         }
 
