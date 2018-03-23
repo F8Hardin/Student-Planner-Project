@@ -20,6 +20,7 @@ namespace StudentPlanner
     public partial class StudentAssignments : Window
     {
         public List<Assignment> MyAssignments { get; set; } = new List<Assignment>(); //list to store assignments //ASSIGNMENTS NEED TO CHECK IF THERE COURSE HAS BEEN DELETED WHEN THEY ARE BEING READ IN, SO ANY ASSIGNMENTS ARE DELETED IF THE CLASS IS DELETED
+        public List<String> MyClasses { get; set; } = new List<string>();
 
         public StudentAssignments()
         {
@@ -44,6 +45,7 @@ namespace StudentPlanner
                     line = file.ReadLine();
                     line = file.ReadLine();
                     Classbox.Items.Add(className);
+                    MyClasses.Add(className);
                 }
             }
         }
@@ -137,8 +139,11 @@ namespace StudentPlanner
                     line = file.ReadLine();
                     homework.DueDate = line;
 
-                    MyAssignments.Add(homework);
-                    viewAssignmentList.Items.Add(homework);
+                    if (MyClasses.Contains(homework.ClassName))
+                    {
+                        MyAssignments.Add(homework);
+                        viewAssignmentList.Items.Add(homework);
+                    }
                 }
             }
         }

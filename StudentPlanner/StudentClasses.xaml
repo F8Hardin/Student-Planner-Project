@@ -17,8 +17,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="addclass" Content="Add Class" HorizontalAlignment="Left" Margin="486,118,0,0" VerticalAlignment="Top" Width="75" Click="addclass_Click"/>
-        <Button x:Name="save" Content="Save and Exit" HorizontalAlignment="Left" Margin="669,292,0,0" VerticalAlignment="Top" Width="75" Click="save_Click" RenderTransformOrigin="-2.907,-7.042"/>
+        <Button x:Name="addclass" Content="Add Class" HorizontalAlignment="Left" Margin="481,118,0,0" VerticalAlignment="Top" Width="80" Click="addclass_Click"/>
+        <Button x:Name="save" Content="Save and Exit" HorizontalAlignment="Left" Margin="669,292,0,0" VerticalAlignment="Top" Width="75" Click="save_exit_Click" RenderTransformOrigin="-2.907,-7.042"/>
         <TextBox x:Name="className" HorizontalAlignment="Left" Height="23" Margin="619,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" />
         <TextBox x:Name="profName" HorizontalAlignment="Left" Height="23" Margin="619,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
         <TextBlock HorizontalAlignment="Left" Margin="465,36,0,0" TextWrapping="Wrap" Text="Enter Professor Name" VerticalAlignment="Top" FontSize="15"/>
@@ -35,5 +35,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="645,91,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontSize="15"/>
         <Button Content="Delete Selected Class" HorizontalAlignment="Left" Margin="465,292,0,0" VerticalAlignment="Top" Width="118" Click="delete_Click"/>
         <Button Content="Edit Selected Class" HorizontalAlignment="Left" Margin="465,268,0,0" VerticalAlignment="Top" Width="118" Click="edit_Click"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="669,268,0,0" VerticalAlignment="Top" Width="75" Click="save_Click"/>
     </Grid>
 </Window>

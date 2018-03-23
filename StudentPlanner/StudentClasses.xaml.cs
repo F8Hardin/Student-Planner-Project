@@ -45,13 +45,14 @@ namespace StudentPlanner
                 profEmail.Text = "-";
             }
 
-            if(MinuteBox.Text == "")
+            if(HourBox.Text == "")
             {
-                if(HourBox.Text == "")
-                {
-                    HourBox.Text = "-";
-                }
+                HourBox.Text = "-";
                 MinuteBox.Text = "--";
+            }
+            else if(MinuteBox.Text == "")
+            {
+                MinuteBox.Text = "00";
             }
 
             string time = HourBox.Text + ":" + MinuteBox.Text + " " + TimeBox.Text;
@@ -70,9 +71,10 @@ namespace StudentPlanner
             HourBox.Text = "";
             MinuteBox.Text = "";
             TimeBox.Text = "";
+            addclass.Content = "Add Class";
         }
 
-        private void save_Click(object sender, RoutedEventArgs e) //calls another funtion that loops through the list and reads it to the save file
+        private void save_exit_Click(object sender, RoutedEventArgs e) //calls another funtion that loops through the list and reads it to the save file
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to keep these changes to your schedule?", "Important Message", MessageBoxButton.OKCancel);
             if(result == MessageBoxResult.Cancel)
@@ -170,13 +172,32 @@ namespace StudentPlanner
                 return;
             }
 
-            MessageBox.Show("Add class after changes have been made.");
+            MessageBox.Show("Save changes after they have been made.");
+
+            addclass.Content = "Save Changes";
             
             Classinfo course = (Classinfo)viewClassList.SelectedItems[0];
 
             className.Text = course.Classname;
             profName.Text = course.Profname;
-            profEmail.Text = course.Profemail;
+            if(course.Profemail == "-")
+            {
+                profEmail.Text = "";
+            }
+            else
+                profEmail.Text = course.Profemail;
+
+            if(course.Time == "-:--")
+            {
+                HourBox.Text = "";
+                MinuteBox.Text = "";
+                TimeBox.Text = "";
+
+                viewClassList.Items.Remove(course);
+                MyClasses.Remove(course);
+
+                return;
+            }
 
             int count = 0;
             string time = course.Time;
@@ -202,6 +223,12 @@ namespace StudentPlanner
 
             viewClassList.Items.Remove(course);
             MyClasses.Remove(course);
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            save_to_file();
+            MessageBox.Show("Changes saved.");
         }
     }
 }
