@@ -147,5 +147,38 @@ namespace StudentPlanner
                 }
             }
         }
+
+        private void complete_Click(object sender, RoutedEventArgs e)
+        {
+            if (viewAssignmentList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No assignment selected.");
+                return;
+            }
+
+            Assignment homework = (Assignment)viewAssignmentList.SelectedItems[0];
+            MyAssignments.Remove(homework);
+            viewAssignmentList.Items.Remove(homework);
+            viewCompletedAssignments.Items.Add(homework);
+        }
+
+        private void incomplete_Click(object sender, RoutedEventArgs e)
+        {
+            if (viewCompletedAssignments.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No assignment selected.");
+                return;
+            }
+
+            Assignment homework = (Assignment)viewCompletedAssignments.SelectedItems[0];
+            MyAssignments.Add(homework);
+            viewAssignmentList.Items.Add(homework);
+            viewCompletedAssignments.Items.Remove(homework);
+        }
+
+        private void edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentPlanner"
         mc:Ignorable="d"
-        Title="StudentAssignments" Height="450" Width="525">
+        Title="StudentAssignments" Height="450" Width="685">
     <Grid Background="ForestGreen">
         <ComboBox x:Name="Classbox" HorizontalAlignment="Left" Margin="363,29,0,0" VerticalAlignment="Top" Width="120"/>
         <ListView x:Name="viewAssignmentList" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="348">
@@ -18,7 +18,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="addassign" Content="Add Assignment" HorizontalAlignment="Left" Margin="363,341,0,0" VerticalAlignment="Top" Width="100" Click="add_click" Height="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="363,12,0,0" TextWrapping="Wrap" Text="Select Course" FontSize="15" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,9,0,0" TextWrapping="Wrap" Text="Select Course" FontSize="15" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="363,56,0,0" TextWrapping="Wrap" Text="Assignment Title" FontSize="15" VerticalAlignment="Top"/>
         <TextBox x:Name="Assigntitle" HorizontalAlignment="Left" Height="23" Margin="363,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="363,104,0,0" TextWrapping="Wrap" Text="Due Date" VerticalAlignment="Top" FontSize="15" RenderTransformOrigin="0.496,1.243"/>
@@ -32,6 +32,16 @@
         <Button x:Name="view" Content="View Assignment Info" HorizontalAlignment="Left" Margin="363,366,0,0" VerticalAlignment="Top" Width="127" Height="20" Click="view_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="363,212,0,0" TextWrapping="Wrap" Text="Assignment Notes" VerticalAlignment="Top" FontSize="15"/>
         <TextBox x:Name="notes" HorizontalAlignment="Left" Height="100" Margin="363,237,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127"/>
+        <ListView x:Name="viewCompletedAssignments" HorizontalAlignment="Left" Height="327" Margin="495,10,0,0" VerticalAlignment="Top" Width="167">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Completed Assignments" Width="167" DisplayMemberBinding="{Binding AssignName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Mark As Complete" HorizontalAlignment="Left" Margin="495,342,0,0" VerticalAlignment="Top" Width="167" Click="complete_Click"/>
+        <Button Content="Mark As Incomplete" HorizontalAlignment="Left" Margin="495,367,0,0" VerticalAlignment="Top" Width="167" Click="incomplete_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="443,391,0,0" VerticalAlignment="Top" Width="75" Click="edit_Click"/>
 
     </Grid>
 </Window>
