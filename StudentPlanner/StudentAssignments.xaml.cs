@@ -55,6 +55,13 @@ namespace StudentPlanner
             Assignment homework = new Assignment();
             homework.ClassName = Classbox.Text;
 
+            if(monthbox.Text == "" || daybox.Text == "" || yearbox.Text == "")
+            {
+                monthbox.Text = "-";
+                daybox.Text = "-";
+                yearbox.Text = "-";
+            }
+
             string date = monthbox.Text + "/" + daybox.Text + "/" + yearbox.Text;
 
             homework.DueDate = date;
@@ -70,18 +77,29 @@ namespace StudentPlanner
 
             viewAssignmentList.Items.Add(homework);
             MyAssignments.Add(homework);
+            addassign.Content = "Add Assignment";
         }
 
         private void Box_Setup() //sets up the comboboxes
         {
             for(int i = 1; i < 13; i++)
             {
-                monthbox.Items.Add(i);
+                if(i < 10)
+                {
+                    monthbox.Items.Add("0" + i);
+                }
+                else
+                    monthbox.Items.Add(i);
             }
 
             for(int i = 1; i < 32; i++)
             {
-                daybox.Items.Add(i);
+                if(i < 10)
+                {
+                    daybox.Items.Add("0" + i);
+                }
+                else
+                    daybox.Items.Add(i);
             }
         }
 
@@ -121,7 +139,7 @@ namespace StudentPlanner
             MessageBox.Show("Assignment Name: " + homework.AssignName + "\nCourse Title: " + homework.ClassName + "\nDue Date: " + homework.DueDate + "\nAdditional Notes: " + homework.Notes);
         }
 
-        private void open_assignments_file()
+        private void open_assignments_file() //opens the file of assignments
         {
             using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
             {
@@ -148,7 +166,7 @@ namespace StudentPlanner
             }
         }
 
-        private void complete_Click(object sender, RoutedEventArgs e)
+        private void complete_Click(object sender, RoutedEventArgs e) //user clicks to mark assignments as complete
         {
             if (viewAssignmentList.SelectedItems.Count == 0)
             {
@@ -162,7 +180,7 @@ namespace StudentPlanner
             viewCompletedAssignments.Items.Add(homework);
         }
 
-        private void incomplete_Click(object sender, RoutedEventArgs e)
+        private void incomplete_Click(object sender, RoutedEventArgs e) //uer clicks to mark assignment as incomplete
         {
             if (viewCompletedAssignments.SelectedItems.Count == 0)
             {
@@ -178,7 +196,66 @@ namespace StudentPlanner
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Save changes once they have been made.");
 
-        }
+            if (viewAssignmentList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No assignment selected.");
+                return;
+            }
+
+            Assignment homework = (Assignment)viewAssignmentList.SelectedItems[0];
+
+            MyAssignments.Remove(homework);
+            viewAssignmentList.Items.Remove(homework);
+
+            Classbox.Text = homework.ClassName;
+            Assigntitle.Text = homework.AssignName;
+            notes.Text = homework.Notes;
+
+            string date = homework.DueDate;
+            string month = "";
+            string year = "";
+            string day = "";
+            int count = 0;
+
+            foreach(char c in date)
+            {
+                if (count < 2)
+                    month += c;
+                if (count > 2 && count < 5)
+                    day += c;
+                if (count > 5)
+                    year += c;
+                count++;
+            }
+
+            monthbox.Text = month;
+            daybox.Text = day;
+            yearbox.Text = year;
+
+            addassign.Content = "Save Changes";
+        }//user clicks to edit an assignment
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (viewAssignmentList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No assignment selected.");
+                return;
+            }
+
+            Assignment homework = (Assignment)viewAssignmentList.SelectedItems[0];
+
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete " + homework.AssignName + " from you assignments?", "Important Message", MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+
+            MyAssignments.Remove(homework);
+            viewAssignmentList.Items.Remove(homework);
+        }//user clicks to delete an assignment
     }
 }
