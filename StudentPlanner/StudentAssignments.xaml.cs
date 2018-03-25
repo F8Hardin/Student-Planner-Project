@@ -44,6 +44,7 @@ namespace StudentPlanner
                     line = file.ReadLine();
                     line = file.ReadLine();
                     line = file.ReadLine();
+                    line = file.ReadLine();
                     Classbox.Items.Add(className);
                     MyClasses.Add(className);
                 }

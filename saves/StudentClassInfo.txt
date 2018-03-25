@@ -1,16 +1,20 @@
-Software Engineering
-Dr. Ericson
-kericson@ut.utm.edu
-2:30 PM
-Linear Algebra
-Dr. Amanda
-amandaN@utm.edu
-2:00 PM
-Public Speaking
-Dr. Hunt
--
-9:00 AM
 Discrete 1
 Dr. Wong
 qwang44@utm.edu
 8:00 AM
+M W F 
+Linear Algebra
+Dr. Amanda
+amandaN@utm.edu
+2:00 PM
+M W F 
+Software Engineering
+Dr. Ericson
+kericson@ut.utm.edu
+2:30 PM
+T R 
+Public Speaking
+Dr. Hunt
+-
+9:00 AM
+M W F 

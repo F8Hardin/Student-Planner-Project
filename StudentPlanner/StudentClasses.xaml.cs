@@ -33,6 +33,7 @@ namespace StudentPlanner
         public void addclass_Click(object sender, RoutedEventArgs e) //reads what the user has typed into the textboxes and saves them to the list while adding them to the listview
         {
             Classinfo course = new Classinfo();
+            course.Classdays = "";
 
             if (className.Text == "" || profName.Text == "")
             {
@@ -57,6 +58,18 @@ namespace StudentPlanner
 
             string time = HourBox.Text + ":" + MinuteBox.Text + " " + TimeBox.Text;
 
+            if (Monday.IsChecked ?? false)
+                course.Classdays += "M ";
+            if (Tuesday.IsChecked ?? false)
+                course.Classdays += "T ";
+            if (Wednesday.IsChecked ?? false)
+                course.Classdays += "W ";
+            if (Thursday.IsChecked ?? false)
+                course.Classdays += "R ";
+            if (Friday.IsChecked ?? false)
+                course.Classdays += "F ";
+
+
             course.Classname = className.Text;
             course.Profname = profName.Text;
             course.Profemail = profEmail.Text;
@@ -72,6 +85,11 @@ namespace StudentPlanner
             MinuteBox.Text = "";
             TimeBox.Text = "";
             addclass.Content = "Add Class";
+            Monday.IsChecked = false;
+            Tuesday.IsChecked = false;
+            Wednesday.IsChecked = false;
+            Thursday.IsChecked = false;
+            Friday.IsChecked = false;
         }
 
         private void save_exit_Click(object sender, RoutedEventArgs e) //calls another funtion that loops through the list and reads it to the save file
@@ -91,7 +109,7 @@ namespace StudentPlanner
             {
                 foreach (var Classinfo in MyClasses)
                 {
-                    file.WriteLine("{0}\r\n{1}\r\n{2}\r\n{3}", Classinfo.Classname, Classinfo.Profname, Classinfo.Profemail, Classinfo.Time); //data seperated by new line in the file
+                    file.WriteLine("{0}\r\n{1}\r\n{2}\r\n{3}\r\n{4}", Classinfo.Classname, Classinfo.Profname, Classinfo.Profemail, Classinfo.Time, Classinfo.Classdays); //data seperated by new line in the file
                 }
                 file.Close();
             }
@@ -114,6 +132,8 @@ namespace StudentPlanner
                     course.Profemail = line;
                     line = file.ReadLine();
                     course.Time = line;
+                    line = file.ReadLine();
+                    course.Classdays = line;
 
                     viewClassList.Items.Add(course);
                     MyClasses.Add(course);
@@ -198,6 +218,17 @@ namespace StudentPlanner
 
                 return;
             }
+
+            if (course.Classdays.Contains("M"))
+                Monday.IsChecked = true;
+            if (course.Classdays.Contains("T"))
+                Tuesday.IsChecked = true;
+            if (course.Classdays.Contains("W"))
+                Wednesday.IsChecked = true;
+            if (course.Classdays.Contains("R"))
+                Thursday.IsChecked = true;
+            if (course.Classdays.Contains("F"))
+                Friday.IsChecked = true;
 
             int count = 0;
             string time = course.Time;

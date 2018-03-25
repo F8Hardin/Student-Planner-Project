@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StudentPlanner"
         mc:Ignorable="d"
         Title="StudentAssignments" Height="450" Width="685">
-    <Grid Background="ForestGreen">
+    <Grid Background="LightBlue">
         <ComboBox x:Name="Classbox" HorizontalAlignment="Left" Margin="363,29,0,0" VerticalAlignment="Top" Width="120"/>
         <ListView x:Name="viewAssignmentList" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="348">
             <ListView.View>

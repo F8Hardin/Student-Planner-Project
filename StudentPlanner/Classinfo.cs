@@ -11,5 +11,6 @@ namespace StudentPlanner
         public string Profname { get; set; } //for names of professors
         public string Profemail { get; set; } //for professor's email
         public string Time { get; set; } //time of classes
+        public string Classdays { get; set; } //the days the classes
     }
 }
