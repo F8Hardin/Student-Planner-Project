@@ -105,6 +105,8 @@ namespace StudentPlanner
 
         private void save_to_file() //saves the assignments to a file
         {
+            MyAssignments.Sort((x, y) => x.DueDate.CompareTo(y.DueDate));
+
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
             {
                 foreach (var Assignment in MyAssignments)

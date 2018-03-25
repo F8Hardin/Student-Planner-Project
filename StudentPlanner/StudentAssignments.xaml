@@ -43,6 +43,5 @@
         <Button Content="Mark As Incomplete" HorizontalAlignment="Left" Margin="495,367,0,0" VerticalAlignment="Top" Width="167" Click="incomplete_Click"/>
         <Button Content="Edit" HorizontalAlignment="Left" Margin="363,391,0,0" VerticalAlignment="Top" Width="61" Click="edit_Click"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="429,391,0,0" VerticalAlignment="Top" Width="61" Click="delete_Click"/>
-
     </Grid>
 </Window>

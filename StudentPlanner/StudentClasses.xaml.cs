@@ -21,7 +21,7 @@ namespace StudentPlanner
     {
         public List<Classinfo> MyClasses { get; set; } = new List<Classinfo>(); //list to store the classes entered by the user, list should be saved to file so in the other xaml file it can be opened
 
-        public StudentClasses()
+        public StudentClasses() //opens up files, sets up boxes, and sets up the window
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -225,7 +225,7 @@ namespace StudentPlanner
             MyClasses.Remove(course);
         }
 
-        private void save_Click(object sender, RoutedEventArgs e)
+        private void save_Click(object sender, RoutedEventArgs e) //saves any changes made
         {
             save_to_file();
             MessageBox.Show("Changes saved.");
