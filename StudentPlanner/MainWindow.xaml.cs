@@ -25,7 +25,7 @@ namespace StudentPlanner
             InitializeComponent();
             this.Title = "Student Planner";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            //add function to read in file with class info
+            open_completed_file();
         }
 
         private void close_Click(object sender, RoutedEventArgs e)//closes the main window
@@ -41,12 +41,38 @@ namespace StudentPlanner
         {
             StudentClasses student = new StudentClasses();
             student.ShowDialog();
+            open_completed_file();
         }
 
-        private void assignments_click(object sender, RoutedEventArgs e)
+        private void assignments_click(object sender, RoutedEventArgs e) //opens the window to display assignments
         {
             StudentAssignments student = new StudentAssignments();
             student.ShowDialog();
+            open_completed_file();
+        }
+
+        private void open_completed_file() //opens completed assignment
+        {
+            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\CompletedAssignments.txt"))
+            {
+                string line;
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    Assignment homework = new Assignment();
+
+                    homework.AssignName = line;
+                    line = file.ReadLine();
+                    homework.Notes = line;
+                    line = file.ReadLine();
+                    homework.ClassName = line;
+                    line = file.ReadLine();
+                    homework.DueDate = line;
+
+                    if (!viewCompletedAssignments.Items.Contains(homework)) //THIS DUMB ASS MOTHERFUCKER DOESN'T WORK
+                        viewCompletedAssignments.Items.Add(homework);
+                }
+            }
         }
     }
 }

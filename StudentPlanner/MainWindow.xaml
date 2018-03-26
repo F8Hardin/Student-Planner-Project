@@ -11,6 +11,13 @@
         <Button x:Name="close" Content="Close Window" HorizontalAlignment="Left" Margin="10,442,0,0" VerticalAlignment="Top" Width="86" Click="close_Click"/>
         <Button x:Name="classes" Content="View Classes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="104" Click="classes_Click"/>
         <Button x:Name="assignments" Content="View Assignments" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="104" Click="assignments_click"/>
+        <ListView x:Name="viewCompletedAssignments" HorizontalAlignment="Left" Height="380" Margin="10,57,0,0" VerticalAlignment="Top" Width="167">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Completed Assignments" Width="167" DisplayMemberBinding="{Binding AssignName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

@@ -19,8 +19,9 @@ namespace StudentPlanner
     /// </summary>
     public partial class StudentAssignments : Window
     {
-        public List<Assignment> MyAssignments { get; set; } = new List<Assignment>(); //list to store assignments //ASSIGNMENTS NEED TO CHECK IF THERE COURSE HAS BEEN DELETED WHEN THEY ARE BEING READ IN, SO ANY ASSIGNMENTS ARE DELETED IF THE CLASS IS DELETED
-        public List<String> MyClasses { get; set; } = new List<string>();
+        public List<Assignment> MyAssignments { get; set; } = new List<Assignment>(); //list to store assignments
+        public List<String> MyClasses { get; set; } = new List<string>(); //reads classes in from file to see if any are deleted and read them into a combobox
+        public List<Assignment> Completed { get; set; } = new List<Assignment>(); //stores completed assignments
 
         public StudentAssignments()
         {
@@ -29,6 +30,7 @@ namespace StudentPlanner
             this.Title = "Your Assignments";
             open_classes_file();
             open_assignments_file();
+            open_completed_file();
             Box_Setup();
         }
 
@@ -178,9 +180,12 @@ namespace StudentPlanner
             }
 
             Assignment homework = (Assignment)viewAssignmentList.SelectedItems[0];
+            //save to file called
             MyAssignments.Remove(homework);
             viewAssignmentList.Items.Remove(homework);
             viewCompletedAssignments.Items.Add(homework);
+            Completed.Add(homework);
+            save_completed();
         }
 
         private void incomplete_Click(object sender, RoutedEventArgs e) //uer clicks to mark assignment as incomplete
@@ -195,6 +200,8 @@ namespace StudentPlanner
             MyAssignments.Add(homework);
             viewAssignmentList.Items.Add(homework);
             viewCompletedAssignments.Items.Remove(homework);
+            Completed.Remove(homework);
+            save_completed();
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
@@ -260,5 +267,42 @@ namespace StudentPlanner
             MyAssignments.Remove(homework);
             viewAssignmentList.Items.Remove(homework);
         }//user clicks to delete an assignment
+
+        private void save_completed()
+        {
+            Completed.Sort((x, y) => x.DueDate.CompareTo(y.DueDate));
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Fate\source\repos\StudentPlanner\saves\CompletedAssignments.txt"))
+            {
+                foreach (var Assignment in Completed)
+                {
+                    file.WriteLine("{0}\r\n{1}\r\n{2}\r\n{3}", Assignment.AssignName, Assignment.Notes, Assignment.ClassName, Assignment.DueDate);
+                }
+                file.Close();
+            }
+        }//saves the completed assignments to a file
+
+        private void open_completed_file()
+        {
+            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\CompletedAssignments.txt"))
+            {
+                string line;
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    Assignment homework = new Assignment();
+
+                    homework.AssignName = line;
+                    line = file.ReadLine();
+                    homework.Notes = line;
+                    line = file.ReadLine();
+                    homework.ClassName = line;
+                    line = file.ReadLine();
+                    homework.DueDate = line;
+                    Completed.Add(homework);
+                    viewCompletedAssignments.Items.Add(homework);
+                }
+            }
+        }
     }
 }
