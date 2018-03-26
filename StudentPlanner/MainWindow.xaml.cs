@@ -41,13 +41,13 @@ namespace StudentPlanner
         {
             StudentClasses student = new StudentClasses();
             student.ShowDialog();
-            open_completed_file();
         }
 
         private void assignments_click(object sender, RoutedEventArgs e) //opens the window to display assignments
         {
             StudentAssignments student = new StudentAssignments();
             student.ShowDialog();
+            viewCompletedAssignments.Items.Clear();
             open_completed_file();
         }
 
@@ -69,8 +69,7 @@ namespace StudentPlanner
                     line = file.ReadLine();
                     homework.DueDate = line;
 
-                    if (!viewCompletedAssignments.Items.Contains(homework)) //THIS DUMB ASS MOTHERFUCKER DOESN'T WORK
-                        viewCompletedAssignments.Items.Add(homework);
+                    viewCompletedAssignments.Items.Add(homework);
                 }
             }
         }
