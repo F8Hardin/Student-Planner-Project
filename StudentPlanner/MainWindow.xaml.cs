@@ -20,6 +20,8 @@ namespace StudentPlanner
     /// </summary>
     public partial class MainWindow : Window
     {
+        string todayDate = DateTime.Now.ToShortDateString();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -82,6 +84,7 @@ namespace StudentPlanner
             using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
             {
                 string line;
+                string date = check_today(todayDate);
 
                 while ((line = file.ReadLine()) != null)
                 {
@@ -95,17 +98,53 @@ namespace StudentPlanner
                     line = file.ReadLine();
                     homework.DueDate = line;
 
-                    string date = DateTime.Now.ToShortDateString();
-                    string result = "0";
-
-                    if (date[2] == '/')
-                        result += date;
-
-                    if (homework.DueDate != result);
-                        viewPastDue.Items.Add(homework);
-                    MessageBox.Show(result);
+                    date_check(homework, date);
                 }
             }
+        }
+
+        private void date_check(Assignment homework, string date) //checks the dates of assignments to see if past due
+        {
+            string Month = homework.DueDate.Substring(0, 2);
+            string Day = homework.DueDate.Substring(3, 2);
+            string Year = homework.DueDate.Substring(6, 4);
+
+            int dueYear = Convert.ToInt32(Year);
+            int dueMonth = Convert.ToInt32(Month);
+            int dueDay = Convert.ToInt32(Day);
+
+            Month = date.Substring(0, 2);
+            Day = date.Substring(3, 2);
+            Year = date.Substring(6, 4);
+
+            int thisYear = Convert.ToInt32(Year);
+            int thisMonth = Convert.ToInt32(Month);
+            int thisDay = Convert.ToInt32(Day);
+
+            if (thisYear > dueYear)
+            {
+                viewPastDue.Items.Add(homework);
+                return;
+            }
+            if(thisMonth > dueMonth)
+            {
+                viewPastDue.Items.Add(homework);
+                return;
+            }
+            if(thisDay > dueDay && thisMonth == dueMonth)
+            {
+                viewPastDue.Items.Add(homework);
+            }
+        }
+
+        private string check_today(string date) //sets up the date read in so it can be treated the same as the due dates of assignments
+        {
+            if (date[1] == '/')
+                date = date.Insert(0, "0");
+            if (date[4] == '/')
+                date = date.Insert(3, "0");
+
+            return date;
         }
     }
 }

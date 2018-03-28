@@ -104,6 +104,13 @@ namespace StudentPlanner
                 else
                     daybox.Items.Add(i);
             }
+
+            string date = DateTime.Now.ToShortDateString();
+            date = date.Substring(date.LastIndexOf('/') + 1);
+            int year = Convert.ToInt32(date);
+
+            yearbox.Items.Add(date);
+            yearbox.Items.Add(year + 1);
         }
 
         private void save_to_file() //saves the assignments to a file
