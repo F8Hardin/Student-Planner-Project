@@ -26,6 +26,7 @@ namespace StudentPlanner
             this.Title = "Student Planner";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             open_completed_file();
+            open_assignments_file();
         }
 
         private void close_Click(object sender, RoutedEventArgs e)//closes the main window
@@ -49,6 +50,8 @@ namespace StudentPlanner
             student.ShowDialog();
             viewCompletedAssignments.Items.Clear();
             open_completed_file();
+            viewPastDue.Items.Clear();
+            open_assignments_file();
         }
 
         private void open_completed_file() //opens completed assignment
@@ -70,6 +73,37 @@ namespace StudentPlanner
                     homework.DueDate = line;
 
                     viewCompletedAssignments.Items.Add(homework);
+                }
+            }
+        }
+
+        private void open_assignments_file() //opens assignments to be seen which are past due
+        {
+            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
+            {
+                string line;
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    Assignment homework = new Assignment();
+
+                    homework.AssignName = line;
+                    line = file.ReadLine();
+                    homework.Notes = line;
+                    line = file.ReadLine();
+                    homework.ClassName = line;
+                    line = file.ReadLine();
+                    homework.DueDate = line;
+
+                    string date = DateTime.Now.ToShortDateString();
+                    string result = "0";
+
+                    if (date[2] == '/')
+                        result += date;
+
+                    if (homework.DueDate != result);
+                        viewPastDue.Items.Add(homework);
+                    MessageBox.Show(result);
                 }
             }
         }
