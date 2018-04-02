@@ -8,9 +8,9 @@
         Title="MainWindow" Height="500" Width="700">
 
     <Grid Background="DarkBlue" Margin="0,0,-6.6,-0.2">
-        <Button x:Name="close" Content="Close Window" HorizontalAlignment="Left" Margin="10,441,0,0" VerticalAlignment="Top" Width="167" Click="close_Click"/>
-        <Button x:Name="classes" Content="View Classes" HorizontalAlignment="Left" Margin="182,37,0,0" VerticalAlignment="Top" Width="167" Click="classes_Click" Height="20"/>
-        <Button x:Name="assignments" Content="View Assignments" HorizontalAlignment="Left" Margin="182,12,0,0" VerticalAlignment="Top" Width="167" Click="assignments_click" Height="20"/>
+        <Button x:Name="close" Content="Close Window" HorizontalAlignment="Left" Margin="10,441,0,0" VerticalAlignment="Top" Width="167" Click="close_Click" Height="20"/>
+        <Button x:Name="classes" Content="View Classes" HorizontalAlignment="Left" Margin="182,441,0,0" VerticalAlignment="Top" Width="167" Click="classes_Click" Height="20"/>
+        <Button x:Name="assignments" Content="View Assignments" HorizontalAlignment="Left" Margin="354,440,0,0" VerticalAlignment="Top" Width="167" Click="assignments_click" Height="20"/>
         <ListView x:Name="viewCompletedAssignments" HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" VerticalAlignment="Top" Width="167">
             <ListView.View>
                 <GridView>
@@ -25,8 +25,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Viewbox>
-            <Calendar RenderTransformOrigin="1400,-2400" Height="188">
+        <Viewbox Margin="-40,-52,41.2,53.6">
+            <Calendar x:Name="Calendar" RenderTransformOrigin="1400,-2400" Height="188" DisplayMode="Month" SelectedDatesChanged="date_clicked">
                 <Calendar.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

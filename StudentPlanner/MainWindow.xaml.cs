@@ -21,6 +21,7 @@ namespace StudentPlanner
     public partial class MainWindow : Window
     {
         string todayDate = DateTime.Now.ToShortDateString();
+        public List<Assignment> MyAssignments { get; set; } = new List<Assignment>();
 
         public MainWindow()
         {
@@ -29,6 +30,7 @@ namespace StudentPlanner
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             open_completed_file();
             open_assignments_file();
+            calendar_dates();
         }
 
         private void close_Click(object sender, RoutedEventArgs e)//closes the main window
@@ -48,11 +50,13 @@ namespace StudentPlanner
 
         private void assignments_click(object sender, RoutedEventArgs e) //opens the window to display assignments
         {
-            StudentAssignments student = new StudentAssignments();
+            string date = "";
+            StudentAssignments student = new StudentAssignments(date);
             student.ShowDialog();
             viewCompletedAssignments.Items.Clear();
             open_completed_file();
             viewPastDue.Items.Clear();
+            MyAssignments.Clear();
             open_assignments_file();
         }
 
@@ -98,6 +102,7 @@ namespace StudentPlanner
                     line = file.ReadLine();
                     homework.DueDate = line;
 
+                    MyAssignments.Add(homework);
                     date_check(homework, date);
                 }
             }
@@ -145,6 +150,75 @@ namespace StudentPlanner
                 date = date.Insert(3, "0");
 
             return date;
+        }
+
+        private void calendar_dates() //crosses out the dates that have already passed
+        {
+            Calendar.DisplayDateStart = DateTime.Today;
+            CalendarDateRange range = new CalendarDateRange(DateTime.MinValue, DateTime.Today);
+            Calendar.BlackoutDates.Add(range);
+        }
+
+        private void date_clicked(object sender, SelectionChangedEventArgs e)
+        {
+            var calendar = sender as Calendar;
+            if (calendar.SelectedDate.HasValue)
+            {
+                DateTime date = calendar.SelectedDate.Value;
+                List<Assignment> todays_assignments = check_date_due(date);
+                string title = check_today(date.ToShortDateString());
+
+                if (todays_assignments.Count != 0)
+                {
+                    string show = "Due Today: \n \n";
+
+                    foreach (var Assignment in todays_assignments)
+                    {
+                        show += Assignment.ClassName;
+                        show += ": \n";
+                        show += Assignment.AssignName;
+                        show += "\n -";
+
+                        if (Assignment.Notes != "")
+                        {
+                            show += Assignment.Notes;
+                            show += "\n";
+                        }
+                        else
+                            show += "No Notes \n";
+                        show += "\n";
+                    }
+                    MessageBox.Show(show);
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("There is no assignment for the selected date, would you like to add one?", title, MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        StudentAssignments student = new StudentAssignments(title);
+                        student.ShowDialog();
+                        viewCompletedAssignments.Items.Clear();
+                        open_completed_file();
+                        viewPastDue.Items.Clear();
+                        open_assignments_file();
+                    }
+                }
+            }
+        }
+
+        private List<Assignment> check_date_due(DateTime date) //checks to see if the date selected has any assignments due
+        {
+            string selected = date.ToShortDateString();
+            selected = check_today(selected);
+            List<Assignment> todays_assignments = new List<Assignment>();
+            
+            foreach(var Assignment in MyAssignments)
+            {
+                if (selected == Assignment.DueDate)
+                    todays_assignments.Add(Assignment);
+            }
+
+            return todays_assignments;
         }
     }
 }

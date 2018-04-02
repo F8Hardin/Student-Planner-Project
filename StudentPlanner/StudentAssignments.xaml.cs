@@ -23,7 +23,7 @@ namespace StudentPlanner
         public List<String> MyClasses { get; set; } = new List<string>(); //reads classes in from file to see if any are deleted and read them into a combobox
         public List<Assignment> Completed { get; set; } = new List<Assignment>(); //stores completed assignments
 
-        public StudentAssignments()
+        public StudentAssignments(string selection)
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -32,6 +32,30 @@ namespace StudentPlanner
             open_assignments_file();
             open_completed_file();
             Box_Setup();
+
+            if(selection != null)
+            {
+                string date = selection;
+                string month = "";
+                string year = "";
+                string day = "";
+                int count = 0;
+
+                foreach (char c in date)
+                {
+                    if (count < 2)
+                        month += c;
+                    if (count > 2 && count < 5)
+                        day += c;
+                    if (count > 5)
+                        year += c;
+                    count++;
+                }
+
+                monthbox.Text = month;
+                daybox.Text = day;
+                yearbox.Text = year;
+            }
         }
 
         private void open_classes_file() //reads the class names from a file, allowing the user to select a class from the combobox when creating an assignment
@@ -85,23 +109,45 @@ namespace StudentPlanner
 
         private void Box_Setup() //sets up the comboboxes
         {
-            for(int i = 1; i < 13; i++)
+            string this_month = "";
+            string this_year = "";
+            string this_day = "";
+            int count = 0;
+            string todays_date = DateTime.Today.ToShortDateString();
+
+            if (todays_date[1] == '/')
+                todays_date = todays_date.Insert(0, "0");
+            if (todays_date[4] == '/')
+                todays_date = todays_date.Insert(3, "0");
+
+            foreach (char c in todays_date)
             {
-                if(i < 10)
+                if (count < 2)
+                    this_month += c;
+                if (count > 2 && count < 5)
+                    this_day += c;
+                if (count > 5)
+                    this_year += c;
+                count++;
+            }
+
+            for (int i = 1; i < 13; i++)
+            {
+                if(i < 10 && i >= Convert.ToInt32(this_month))
                 {
                     monthbox.Items.Add("0" + i);
                 }
-                else
+                else if (i >= Convert.ToInt32(this_month))
                     monthbox.Items.Add(i);
             }
 
             for(int i = 1; i < 32; i++)
             {
-                if(i < 10)
+                if(i < 10 && i > Convert.ToInt32(this_day))
                 {
                     daybox.Items.Add("0" + i);
                 }
-                else
+                else if (i > Convert.ToInt32(this_day))
                     daybox.Items.Add(i);
             }
 
@@ -211,7 +257,7 @@ namespace StudentPlanner
             save_completed();
         }
 
-        private void edit_Click(object sender, RoutedEventArgs e)
+        private void edit_Click(object sender, RoutedEventArgs e) //user clicks to edit an assignment
         {
             MessageBox.Show("Save changes once they have been made.");
 
@@ -252,9 +298,9 @@ namespace StudentPlanner
             yearbox.Text = year;
 
             addassign.Content = "Save Changes";
-        }//user clicks to edit an assignment
+        }
 
-        private void delete_Click(object sender, RoutedEventArgs e)
+        private void delete_Click(object sender, RoutedEventArgs e) //user clicks to delete an assignment
         {
             if (viewAssignmentList.SelectedItems.Count == 0)
             {
@@ -273,9 +319,9 @@ namespace StudentPlanner
 
             MyAssignments.Remove(homework);
             viewAssignmentList.Items.Remove(homework);
-        }//user clicks to delete an assignment
+        }
 
-        private void save_completed()
+        private void save_completed() //saves the completed assignments to a file
         {
             Completed.Sort((x, y) => x.DueDate.CompareTo(y.DueDate));
 
@@ -287,9 +333,9 @@ namespace StudentPlanner
                 }
                 file.Close();
             }
-        }//saves the completed assignments to a file
+        }
 
-        private void open_completed_file()
+        private void open_completed_file() //opens the file of completed assignments
         {
             using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\CompletedAssignments.txt"))
             {
