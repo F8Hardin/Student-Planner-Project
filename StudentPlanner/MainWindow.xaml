@@ -25,6 +25,17 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        <Viewbox>
+            <Calendar RenderTransformOrigin="1400,-2400" Height="188">
+                <Calendar.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.005"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Calendar.RenderTransform>
+            </Calendar>
+        </Viewbox>
     </Grid>
 </Window>
