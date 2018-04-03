@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Text;
 using System.Linq;
-using System.Text;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,12 +46,12 @@ namespace StudentPlanner
                 profEmail.Text = "-";
             }
 
-            if(HourBox.Text == "")
+            if (HourBox.Text == "")
             {
                 HourBox.Text = "-";
                 MinuteBox.Text = "--";
             }
-            else if(MinuteBox.Text == "")
+            else if (MinuteBox.Text == "")
             {
                 MinuteBox.Text = "00";
             }
@@ -77,7 +77,7 @@ namespace StudentPlanner
 
             viewClassList.Items.Add(course);
             MyClasses.Add(course);
-            
+
             className.Text = "";
             profName.Text = "";
             profEmail.Text = "";
@@ -95,7 +95,7 @@ namespace StudentPlanner
         private void save_exit_Click(object sender, RoutedEventArgs e) //calls another funtion that loops through the list and reads it to the save file
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to keep these changes to your schedule?", "Important Message", MessageBoxButton.OKCancel);
-            if(result == MessageBoxResult.Cancel)
+            if (result == MessageBoxResult.Cancel)
             {
                 return;
             }
@@ -105,7 +105,7 @@ namespace StudentPlanner
 
         private void save_to_file() //saves the data that is in the list to a file
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentClassInfo.txt"))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"saves\StudentClassInfo.txt"))
             {
                 foreach (var Classinfo in MyClasses)
                 {
@@ -117,7 +117,7 @@ namespace StudentPlanner
 
         private void open_from_file() //reads any course info that is already entered into the list and listview
         {
-            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentClassInfo.txt"))
+            using (var file = new System.IO.StreamReader(@"saves\StudentClassInfo.txt"))
             {
                 string line;
 
@@ -195,19 +195,19 @@ namespace StudentPlanner
             MessageBox.Show("Save changes after they have been made.");
 
             addclass.Content = "Save Changes";
-            
+
             Classinfo course = (Classinfo)viewClassList.SelectedItems[0];
 
             className.Text = course.Classname;
             profName.Text = course.Profname;
-            if(course.Profemail == "-")
+            if (course.Profemail == "-")
             {
                 profEmail.Text = "";
             }
             else
                 profEmail.Text = course.Profemail;
 
-            if(course.Time == "-:--")
+            if (course.Time == "-:--")
             {
                 HourBox.Text = "";
                 MinuteBox.Text = "";
@@ -235,10 +235,10 @@ namespace StudentPlanner
             string hour = "";
             string minute = "";
 
-            foreach(char c in time)
+            foreach (char c in time)
             {
                 count++;
-                if(c != ':' && count < 3)
+                if (c != ':' && count < 3)
                 {
                     hour += c;
                     time = time.Remove(0, 1);

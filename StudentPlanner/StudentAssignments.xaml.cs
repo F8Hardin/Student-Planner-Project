@@ -33,7 +33,7 @@ namespace StudentPlanner
             open_completed_file();
             Box_Setup();
 
-            if(selection != null)
+            if (selection != null)
             {
                 string date = selection;
                 string month = "";
@@ -60,11 +60,11 @@ namespace StudentPlanner
 
         private void open_classes_file() //reads the class names from a file, allowing the user to select a class from the combobox when creating an assignment
         {
-            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentClassInfo.txt"))
+            using (var file = new System.IO.StreamReader(@"saves\StudentClassInfo.txt"))
             {
                 string line;
                 string className;
-                while((line = file.ReadLine()) != null)
+                while ((line = file.ReadLine()) != null)
                 {
                     className = line;
                     line = file.ReadLine();
@@ -82,7 +82,7 @@ namespace StudentPlanner
             Assignment homework = new Assignment();
             homework.ClassName = Classbox.Text;
 
-            if(monthbox.Text == "" || daybox.Text == "" || yearbox.Text == "")
+            if (monthbox.Text == "" || daybox.Text == "" || yearbox.Text == "")
             {
                 monthbox.Text = "-";
                 daybox.Text = "-";
@@ -133,7 +133,7 @@ namespace StudentPlanner
 
             for (int i = 1; i < 13; i++)
             {
-                if(i < 10 && i >= Convert.ToInt32(this_month))
+                if (i < 10 && i >= Convert.ToInt32(this_month))
                 {
                     monthbox.Items.Add("0" + i);
                 }
@@ -141,9 +141,9 @@ namespace StudentPlanner
                     monthbox.Items.Add(i);
             }
 
-            for(int i = 1; i < 32; i++)
+            for (int i = 1; i < 32; i++)
             {
-                if(i < 10 && i > Convert.ToInt32(this_day))
+                if (i < 10 && i > Convert.ToInt32(this_day))
                 {
                     daybox.Items.Add("0" + i);
                 }
@@ -163,7 +163,7 @@ namespace StudentPlanner
         {
             MyAssignments.Sort((x, y) => x.DueDate.CompareTo(y.DueDate));
 
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"saves\StudentAssignments.txt"))
             {
                 foreach (var Assignment in MyAssignments)
                 {
@@ -187,7 +187,7 @@ namespace StudentPlanner
 
         private void view_Click(object sender, RoutedEventArgs e) //allows the user to see all the information related to an assignment
         {
-            if(viewAssignmentList.SelectedItems.Count == 0)
+            if (viewAssignmentList.SelectedItems.Count == 0)
             {
                 MessageBox.Show("No assignment selected.");
                 return;
@@ -199,11 +199,11 @@ namespace StudentPlanner
 
         private void open_assignments_file() //opens the file of assignments
         {
-            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
+            using (var file = new System.IO.StreamReader(@"saves\StudentAssignments.txt"))
             {
                 string line;
 
-                while((line = file.ReadLine()) != null)
+                while ((line = file.ReadLine()) != null)
                 {
                     Assignment homework = new Assignment();
 
@@ -282,7 +282,7 @@ namespace StudentPlanner
             string day = "";
             int count = 0;
 
-            foreach(char c in date)
+            foreach (char c in date)
             {
                 if (count < 2)
                     month += c;
@@ -325,7 +325,7 @@ namespace StudentPlanner
         {
             Completed.Sort((x, y) => x.DueDate.CompareTo(y.DueDate));
 
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Fate\source\repos\StudentPlanner\saves\CompletedAssignments.txt"))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"saves\CompletedAssignments.txt"))
             {
                 foreach (var Assignment in Completed)
                 {
@@ -337,7 +337,7 @@ namespace StudentPlanner
 
         private void open_completed_file() //opens the file of completed assignments
         {
-            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\CompletedAssignments.txt"))
+            using (var file = new System.IO.StreamReader(@"saves\CompletedAssignments.txt"))
             {
                 string line;
 

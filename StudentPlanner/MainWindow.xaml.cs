@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace StudentPlanner
 
         public MainWindow()
         {
+            System.IO.Directory.CreateDirectory("saves");
             InitializeComponent();
             this.Title = "Student Planner";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -36,7 +38,7 @@ namespace StudentPlanner
         private void close_Click(object sender, RoutedEventArgs e)//closes the main window
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to quit the applicaiton?", "Warning", MessageBoxButton.OKCancel);
-            if(result == MessageBoxResult.OK)
+            if (result == MessageBoxResult.OK)
             {
                 this.Close();
             }
@@ -62,7 +64,7 @@ namespace StudentPlanner
 
         private void open_completed_file() //opens completed assignment
         {
-            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\CompletedAssignments.txt"))
+            using (var file = new System.IO.StreamReader(@"saves\CompletedAssignments.txt"))
             {
                 string line;
 
@@ -85,7 +87,7 @@ namespace StudentPlanner
 
         private void open_assignments_file() //opens assignments to be seen which are past due
         {
-            using (var file = new System.IO.StreamReader(@"C:\Users\Fate\source\repos\StudentPlanner\saves\StudentAssignments.txt"))
+            using (var file = new System.IO.StreamReader(@"saves\StudentAssignments.txt"))
             {
                 string line;
                 string date = check_today(todayDate);
@@ -131,12 +133,12 @@ namespace StudentPlanner
                 viewPastDue.Items.Add(homework);
                 return;
             }
-            if(thisMonth > dueMonth)
+            if (thisMonth > dueMonth)
             {
                 viewPastDue.Items.Add(homework);
                 return;
             }
-            if(thisDay > dueDay && thisMonth == dueMonth)
+            if (thisDay > dueDay && thisMonth == dueMonth)
             {
                 viewPastDue.Items.Add(homework);
             }
@@ -211,8 +213,8 @@ namespace StudentPlanner
             string selected = date.ToShortDateString();
             selected = check_today(selected);
             List<Assignment> todays_assignments = new List<Assignment>();
-            
-            foreach(var Assignment in MyAssignments)
+
+            foreach (var Assignment in MyAssignments)
             {
                 if (selected == Assignment.DueDate)
                     todays_assignments.Add(Assignment);
