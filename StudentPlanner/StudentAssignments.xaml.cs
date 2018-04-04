@@ -175,13 +175,12 @@ namespace StudentPlanner
 
         private void save_exit_Click(object sender, RoutedEventArgs e) //calls the save function when clicked
         {
-            save_to_file();
-
-            MessageBoxResult result = MessageBox.Show("Assignments saved. Are you sure you want to exit?", "Important Message", MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to save these changes?", "Important Message", MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.Cancel)
             {
                 return;
             }
+            save_to_file();
             this.Close();
         }
 
