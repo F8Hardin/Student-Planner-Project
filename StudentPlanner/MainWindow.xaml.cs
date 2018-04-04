@@ -27,6 +27,7 @@ namespace StudentPlanner
         public MainWindow()
         {
             System.IO.Directory.CreateDirectory("saves");
+            create_files();
             InitializeComponent();
             this.Title = "Student Planner";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -221,6 +222,16 @@ namespace StudentPlanner
             }
 
             return todays_assignments;
+        }
+
+        private void create_files()
+        {
+            if (!File.Exists(@"saves\CompletedAssignments.txt"))
+                File.Create(@"saves\CompletedAssignments.txt").Close();
+            if (!File.Exists(@"saves\StudentAssignments.txt"))
+                File.Create(@"saves\StudentAssignments.txt").Close();
+            if (!File.Exists(@"saves\StudentClassInfo.txt"))
+                File.Create(@"saves\StudentClassInfo.txt").Close();
         }
     }
 }
