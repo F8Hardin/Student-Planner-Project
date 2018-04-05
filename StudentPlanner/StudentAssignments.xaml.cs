@@ -232,7 +232,6 @@ namespace StudentPlanner
             }
 
             Assignment homework = (Assignment)viewAssignmentList.SelectedItems[0];
-            //save to file called
             MyAssignments.Remove(homework);
             viewAssignmentList.Items.Remove(homework);
             viewCompletedAssignments.Items.Add(homework);
