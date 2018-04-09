@@ -81,13 +81,20 @@ namespace StudentPlanner
                     line = file.ReadLine();
                     homework.DueDate = line;
 
-                    viewCompletedAssignments.Items.Add(homework);
+                    string Month = homework.DueDate.Substring(0, 2);
+                    int month = Convert.ToInt32(Month);
+
+                    if (month > DateTime.Now.Month - 1)
+                    {
+                        viewCompletedAssignments.Items.Add(homework);
+                    }
                 }
             }
         }
 
         private void open_assignments_file() //opens assignments to be seen which are past due
         {
+            
             using (var file = new System.IO.StreamReader(@"saves\StudentAssignments.txt"))
             {
                 string line;

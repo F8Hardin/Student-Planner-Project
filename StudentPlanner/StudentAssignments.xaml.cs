@@ -351,8 +351,15 @@ namespace StudentPlanner
                     homework.ClassName = line;
                     line = file.ReadLine();
                     homework.DueDate = line;
-                    Completed.Add(homework);
-                    viewCompletedAssignments.Items.Add(homework);
+
+                    string Month = homework.DueDate.Substring(0, 2);
+                    int month = Convert.ToInt32(Month);
+
+                    if (month > DateTime.Now.Month - 1)
+                    {
+                        Completed.Add(homework);
+                        viewCompletedAssignments.Items.Add(homework);
+                    }
                 }
             }
         }
