@@ -60,7 +60,7 @@ namespace StudentPlanner
             open_completed_file();
             viewPastDue.Items.Clear();
             MyAssignments.Clear();
-            open_assignments_file();
+            open_assignments_file();            
         }
 
         private void open_completed_file() //opens completed assignment
@@ -94,7 +94,8 @@ namespace StudentPlanner
 
         private void open_assignments_file() //opens assignments to be seen which are past due
         {
-            
+            MyAssignments = new List<Assignment>();
+
             using (var file = new System.IO.StreamReader(@"saves\StudentAssignments.txt"))
             {
                 string line;
@@ -169,7 +170,7 @@ namespace StudentPlanner
             Calendar.BlackoutDates.Add(range);
         }
 
-        private void date_clicked(object sender, SelectionChangedEventArgs e)
+        private void date_clicked(object sender, SelectionChangedEventArgs e) //
         {
             var calendar = sender as Calendar;
             if (calendar.SelectedDate.HasValue)
@@ -224,14 +225,16 @@ namespace StudentPlanner
 
             foreach (var Assignment in MyAssignments)
             {
-                if (selected == Assignment.DueDate)
+                if (selected == Assignment.DueDate && !todays_assignments.Contains(Assignment))
+                {
                     todays_assignments.Add(Assignment);
+                }
             }
 
             return todays_assignments;
         }
 
-        private void create_files()
+        private void create_files() //creates the files needed to store assignments if they do not already exist
         {
             if (!File.Exists(@"saves\CompletedAssignments.txt"))
                 File.Create(@"saves\CompletedAssignments.txt").Close();
