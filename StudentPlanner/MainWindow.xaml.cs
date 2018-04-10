@@ -23,6 +23,7 @@ namespace StudentPlanner
     {
         string todayDate = DateTime.Now.ToShortDateString();
         public List<Assignment> MyAssignments { get; set; } = new List<Assignment>();
+        public List<Classinfo> MyClasses { get; set; } = new List<Classinfo>();
 
         public MainWindow()
         {
@@ -32,6 +33,7 @@ namespace StudentPlanner
             this.Title = "Student Planner";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             open_completed_file();
+            open_classes_file();
             open_assignments_file();
             calendar_dates();
         }
@@ -49,6 +51,10 @@ namespace StudentPlanner
         {
             StudentClasses student = new StudentClasses();
             student.ShowDialog();
+            Monday.Items.Clear();
+            Tuesday.Items.Clear();
+            Wednesday.Items.Clear();
+            open_classes_file();
         }
 
         private void assignments_click(object sender, RoutedEventArgs e) //opens the window to display assignments
@@ -60,6 +66,7 @@ namespace StudentPlanner
             open_completed_file();
             viewPastDue.Items.Clear();
             MyAssignments.Clear();
+            due_today.Items.Clear();
             open_assignments_file();            
         }
 
@@ -113,10 +120,23 @@ namespace StudentPlanner
                     line = file.ReadLine();
                     homework.DueDate = line;
 
+                    if(homework.DueDate == date)
+                    {
+                        due_today.Items.Add(homework);
+                    }
+
                     MyAssignments.Add(homework);
                     date_check(homework, date);
                 }
             }
+
+            if (due_today.Items.Count == 0)
+            {
+                Assignment homework = new Assignment();
+                homework.AssignName = "Nothing due today.";
+                due_today.Items.Add(homework);
+            }
+
         }
 
         private void date_check(Assignment homework, string date) //checks the dates of assignments to see if past due
@@ -242,6 +262,51 @@ namespace StudentPlanner
                 File.Create(@"saves\StudentAssignments.txt").Close();
             if (!File.Exists(@"saves\StudentClassInfo.txt"))
                 File.Create(@"saves\StudentClassInfo.txt").Close();
+        }
+
+        private void open_classes_file()
+        {
+            using (var file = new System.IO.StreamReader(@"saves\StudentClassInfo.txt"))
+            {
+                string line;
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    Classinfo course = new Classinfo();
+
+                    course.Classname = line;
+                    line = file.ReadLine();
+                    course.Profname = line;
+                    line = file.ReadLine();
+                    course.Profemail = line;
+                    line = file.ReadLine();
+                    course.Time = line;
+                    line = file.ReadLine();
+                    course.Classdays = line;
+
+                    if (course.Classdays.Contains("T"))
+                    {
+                        Tuesday.Items.Add(course);
+                    }
+                    if (course.Classdays.Contains("W"))
+                    {
+                        Wednesday.Items.Add(course);
+                    }
+                    if (course.Classdays.Contains("M"))
+                    {
+                        Monday.Items.Add(course);
+                    }
+                    if (course.Classdays.Contains("F"))
+                    {
+                        Friday.Items.Add(course);
+                    }
+                    if (course.Classdays.Contains("R"))
+                    {
+                        Thursday.Items.Add(course);
+                    }
+                }
+                file.Close();
+            }
         }
     }
 }

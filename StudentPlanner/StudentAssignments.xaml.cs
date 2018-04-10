@@ -82,6 +82,12 @@ namespace StudentPlanner
             Assignment homework = new Assignment();
             homework.ClassName = Classbox.Text;
 
+            if (Assigntitle.Text == "" || Classbox.Text == "")
+            {
+                MessageBox.Show("Assignment title and course selection needed.");
+                return;
+            }
+
             if (monthbox.Text == "" || daybox.Text == "" || yearbox.Text == "")
             {
                 monthbox.Text = "-";
