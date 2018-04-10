@@ -46,35 +46,35 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="Monday" HorizontalAlignment="Left" Height="105" Margin="220,455,0,0" VerticalAlignment="Top" Width="115">
+        <ListView x:Name="Monday" HorizontalAlignment="Left" Height="105" Margin="210,455,0,0" VerticalAlignment="Top" Width="115">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="115" Header="Monday" DisplayMemberBinding="{Binding Classname}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="Tuesday" HorizontalAlignment="Left" Height="105" Margin="340,455,0,0" VerticalAlignment="Top" Width="115">
+        <ListView x:Name="Tuesday" HorizontalAlignment="Left" Height="105" Margin="330,454,0,0" VerticalAlignment="Top" Width="115">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="115" Header="Tuesday" DisplayMemberBinding="{Binding Classname}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="Wednesday" HorizontalAlignment="Left" Height="105" Margin="460,455,0,0" VerticalAlignment="Top" Width="115">
+        <ListView x:Name="Wednesday" HorizontalAlignment="Left" Height="105" Margin="450,454,0,0" VerticalAlignment="Top" Width="115">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="115" Header="Wednesday" DisplayMemberBinding="{Binding Classname}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="Thursday" HorizontalAlignment="Left" Height="104" Margin="580,456,0,0" VerticalAlignment="Top" Width="115">
+        <ListView x:Name="Thursday" HorizontalAlignment="Left" Height="104" Margin="570,454,0,0" VerticalAlignment="Top" Width="115">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="115" Header="Thursday" DisplayMemberBinding="{Binding Classname}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="Friday" HorizontalAlignment="Left" Height="104" Margin="700,456,0,0" VerticalAlignment="Top" Width="115">
+        <ListView x:Name="Friday" HorizontalAlignment="Left" Height="104" Margin="690,454,0,0" VerticalAlignment="Top" Width="115">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="115" Header="Friday" DisplayMemberBinding="{Binding Classname}"/>
