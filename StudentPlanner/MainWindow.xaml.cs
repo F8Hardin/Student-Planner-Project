@@ -137,6 +137,13 @@ namespace StudentPlanner
                 due_today.Items.Add(homework);
             }
 
+            if(viewPastDue.Items.Count == 0)
+            {
+                Assignment homework = new Assignment();
+                homework.AssignName = "No late assignments.";
+                viewPastDue.Items.Add(homework);
+            }
+
         }
 
         private void date_check(Assignment homework, string date) //checks the dates of assignments to see if past due
@@ -264,7 +271,7 @@ namespace StudentPlanner
                 File.Create(@"saves\StudentClassInfo.txt").Close();
         }
 
-        private void open_classes_file()
+        private void open_classes_file() //opens classes file to see the days the user has classes
         {
             using (var file = new System.IO.StreamReader(@"saves\StudentClassInfo.txt"))
             {
@@ -305,8 +312,40 @@ namespace StudentPlanner
                         Thursday.Items.Add(course);
                     }
                 }
+
+                if(Monday.Items.Count == 0)
+                {
+                    Assignment homework = new Assignment();
+                    homework.ClassName = "No classes";
+                    Monday.Items.Add(homework);
+                }
+                if (Tuesday.Items.Count == 0)
+                {
+                    Assignment homework = new Assignment();
+                    homework.ClassName = "No classes";
+                    Tuesday.Items.Add(homework);
+                }
+                if (Wednesday.Items.Count == 0)
+                {
+                    Assignment homework = new Assignment();
+                    homework.ClassName = "No classes";
+                    Wednesday.Items.Add(homework);
+                }
+                if (Thursday.Items.Count == 0)
+                {
+                    Assignment homework = new Assignment();
+                    homework.ClassName = "No classes";
+                    Thursday.Items.Add(homework);
+                }
+                if (Friday.Items.Count == 0)
+                {
+                    Assignment homework = new Assignment();
+                    homework.ClassName = "No classes";
+                    Friday.Items.Add(homework);
+                }
+
                 file.Close();
             }
-        }
+        }//opens the file of classes to read them into the day display boxes
     }
 }

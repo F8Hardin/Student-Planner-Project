@@ -243,6 +243,7 @@ namespace StudentPlanner
             viewCompletedAssignments.Items.Add(homework);
             Completed.Add(homework);
             save_completed();
+            save_to_file();
         }
 
         private void incomplete_Click(object sender, RoutedEventArgs e) //uer clicks to mark assignment as incomplete
@@ -259,6 +260,7 @@ namespace StudentPlanner
             viewCompletedAssignments.Items.Remove(homework);
             Completed.Remove(homework);
             save_completed();
+            save_to_file();
         }
 
         private void edit_Click(object sender, RoutedEventArgs e) //user clicks to edit an assignment
@@ -323,6 +325,7 @@ namespace StudentPlanner
 
             MyAssignments.Remove(homework);
             viewAssignmentList.Items.Remove(homework);
+            save_to_file();
         }
 
         private void save_completed() //saves the completed assignments to a file
