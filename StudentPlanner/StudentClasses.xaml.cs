@@ -105,6 +105,8 @@ namespace StudentPlanner
 
         private void save_to_file() //saves the data that is in the list to a file
         {
+            MyClasses.Sort((x, y) => x.Time.CompareTo(y.Time));
+
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"saves\StudentClassInfo.txt"))
             {
                 foreach (var Classinfo in MyClasses)
