@@ -54,6 +54,8 @@ namespace StudentPlanner
             Monday.Items.Clear();
             Tuesday.Items.Clear();
             Wednesday.Items.Clear();
+            Thursday.Items.Clear();
+            Friday.Items.Clear();
             open_classes_file();
         }
 
