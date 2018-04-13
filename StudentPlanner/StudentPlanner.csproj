@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Assignment.cs" />
+    <Compile Include="CalenderBackground.cs" />
     <Compile Include="Classinfo.cs" />
     <Compile Include="StudentAssignments.xaml.cs">
       <DependentUpon>StudentAssignments.xaml</DependentUpon>

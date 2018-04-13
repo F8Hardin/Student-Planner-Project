@@ -24,18 +24,23 @@ namespace StudentPlanner
         string todayDate = DateTime.Now.ToShortDateString();
         public List<Assignment> MyAssignments { get; set; } = new List<Assignment>();
         public List<Classinfo> MyClasses { get; set; } = new List<Classinfo>();
+        private readonly CalenderBackground background;
 
         public MainWindow()
         {
             System.IO.Directory.CreateDirectory("saves");
             create_files();
+
             InitializeComponent();
             this.Title = "Student Planner";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            background = new CalenderBackground(Calendar);
+            background.AddOverlay("tjek", "tjek.png");
+
+            calendar_dates();
             open_completed_file();
             open_classes_file();
             open_assignments_file();
-            calendar_dates();
         }
 
         private void close_Click(object sender, RoutedEventArgs e)//closes the main window
@@ -69,7 +74,8 @@ namespace StudentPlanner
             viewPastDue.Items.Clear();
             MyAssignments.Clear();
             due_today.Items.Clear();
-            open_assignments_file();            
+            background.ClearDates();
+            open_assignments_file();
         }
 
         private void open_completed_file() //opens completed assignment
@@ -104,6 +110,7 @@ namespace StudentPlanner
         private void open_assignments_file() //opens assignments to be seen which are past due
         {
             MyAssignments = new List<Assignment>();
+            
 
             using (var file = new System.IO.StreamReader(@"saves\StudentAssignments.txt"))
             {
@@ -129,6 +136,8 @@ namespace StudentPlanner
 
                     MyAssignments.Add(homework);
                     date_check(homework, date);
+
+                    Add_Calendar_Dates(homework, date);
                 }
             }
 
@@ -145,7 +154,6 @@ namespace StudentPlanner
                 homework.AssignName = "No late assignments.";
                 viewPastDue.Items.Add(homework);
             }
-
         }
 
         private void date_check(Assignment homework, string date) //checks the dates of assignments to see if past due
@@ -348,6 +356,42 @@ namespace StudentPlanner
 
                 file.Close();
             }
-        }//opens the file of classes to read them into the day display boxes
+        }
+
+        private void CalenderOnDisplayDateChanged(object sender, CalendarDateChangedEventArgs calendarDateChangedEventArgs)//cite this!!
+        {
+            Calendar.Background = background.GetBackground();
+        }
+
+        private void Add_Calendar_Dates(Assignment homework, string date) //puts the images on dates with assignments
+        {
+            string Month = homework.DueDate.Substring(0, 2);
+            string Day = homework.DueDate.Substring(3, 2);
+            string Year = homework.DueDate.Substring(6, 4);
+            int dueyear = Convert.ToInt32(Year);
+            int dueday = Convert.ToInt32(Day);
+            int duemonth = Convert.ToInt32(Month);
+            Month = date.Substring(0, 2);
+            Day = date.Substring(3, 2);
+            Year = date.Substring(6, 4);
+            int thisYear = Convert.ToInt32(Year);
+            int thisMonth = Convert.ToInt32(Month);
+            int thisDay = Convert.ToInt32(Day);
+
+            if (thisYear < dueyear)
+            {
+                background.AddDate(new DateTime(dueyear, duemonth, dueday), "tjek");
+            }
+            if (thisMonth < duemonth)
+            {
+                background.AddDate(new DateTime(dueyear, duemonth, dueday), "tjek");
+            }
+            if (thisDay < dueday)
+            {
+                background.AddDate(new DateTime(dueyear, duemonth, dueday), "tjek");
+            }
+            Calendar.Background = background.GetBackground();
+            Calendar.DisplayDateChanged += CalenderOnDisplayDateChanged;
+        }
     }
 }
