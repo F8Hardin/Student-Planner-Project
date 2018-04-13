@@ -36,6 +36,7 @@ namespace StudentPlanner
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             background = new CalenderBackground(Calendar);
             background.AddOverlay("tjek", "tjek.png");
+            
 
             calendar_dates();
             open_completed_file();
@@ -237,6 +238,7 @@ namespace StudentPlanner
                         show += "\n";
                     }
                     MessageBox.Show(show);
+                    Calendar.SelectedDates.Clear();
                 }
                 else
                 {
@@ -249,6 +251,7 @@ namespace StudentPlanner
                         open_completed_file();
                         viewPastDue.Items.Clear();
                         open_assignments_file();
+                        Calendar.SelectedDates.Clear();
                     }
                 }
             }
