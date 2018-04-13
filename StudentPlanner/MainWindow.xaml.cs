@@ -34,9 +34,12 @@ namespace StudentPlanner
             InitializeComponent();
             this.Title = "Student Planner";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             background = new CalenderBackground(Calendar);
             background.AddOverlay("tjek", "tjek.png");
-            
+            background.AddOverlay("circle", "circle.png");
+            background.AddOverlay("cross", "cross.png");
+            background.AddOverlay("box", "box.png");
 
             calendar_dates();
             open_completed_file();
@@ -178,16 +181,25 @@ namespace StudentPlanner
             if (thisYear > dueYear)
             {
                 viewPastDue.Items.Add(homework);
+                background.AddDate(new DateTime(dueYear, dueMonth, dueDay), "cross");
+                Calendar.Background = background.GetBackground();
+                Calendar.DisplayDateChanged += CalenderOnDisplayDateChanged;
                 return;
             }
             if (thisMonth > dueMonth)
             {
                 viewPastDue.Items.Add(homework);
+                background.AddDate(new DateTime(dueYear, dueMonth, dueDay), "cross");
+                Calendar.Background = background.GetBackground();
+                Calendar.DisplayDateChanged += CalenderOnDisplayDateChanged;
                 return;
             }
             if (thisDay > dueDay && thisMonth == dueMonth)
             {
                 viewPastDue.Items.Add(homework);
+                background.AddDate(new DateTime(dueYear, dueMonth, dueDay), "cross");
+                Calendar.Background = background.GetBackground();
+                Calendar.DisplayDateChanged += CalenderOnDisplayDateChanged;
             }
         }
 
@@ -383,15 +395,15 @@ namespace StudentPlanner
 
             if (thisYear < dueyear)
             {
-                background.AddDate(new DateTime(dueyear, duemonth, dueday), "tjek");
+                background.AddDate(new DateTime(dueyear, duemonth, dueday), "circle");
             }
             if (thisMonth < duemonth)
             {
-                background.AddDate(new DateTime(dueyear, duemonth, dueday), "tjek");
+                background.AddDate(new DateTime(dueyear, duemonth, dueday), "circle");
             }
             if (thisDay < dueday)
             {
-                background.AddDate(new DateTime(dueyear, duemonth, dueday), "tjek");
+                background.AddDate(new DateTime(dueyear, duemonth, dueday), "circle");
             }
             Calendar.Background = background.GetBackground();
             Calendar.DisplayDateChanged += CalenderOnDisplayDateChanged;
