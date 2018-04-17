@@ -183,6 +183,7 @@ namespace StudentPlanner
         {
             MessageBox.Show("Changes saved.");
             save_to_file();
+            save_completed();
             this.Close();
         }
 
