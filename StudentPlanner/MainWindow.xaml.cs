@@ -36,10 +36,10 @@ namespace StudentPlanner
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             background = new CalenderBackground(Calendar);
-            background.AddOverlay("tjek", "tjek.png");
-            background.AddOverlay("circle", "circle.png");
-            background.AddOverlay("cross", "cross.png");
-            background.AddOverlay("box", "box.png");
+            background.AddOverlay("tjek", "../../tjek.png");
+            background.AddOverlay("circle", "../../circle.png");
+            background.AddOverlay("cross", "../../cross.png");
+            background.AddOverlay("box", "../../box.png");
 
             calendar_dates();
             open_completed_file();
