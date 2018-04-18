@@ -18,7 +18,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="viewPastDue" HorizontalAlignment="Left" Height="105"  Margin="10,120,0,0" VerticalAlignment="Top" Width="310">
+        <ListView x:Name="viewPastDue" RenderTransformOrigin="1400,-2400" HorizontalAlignment="Left" Height="105"  Margin="10,120,0,0" VerticalAlignment="Top" Width="310">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Past Due" Width="150" DisplayMemberBinding="{Binding AssignName}"/>

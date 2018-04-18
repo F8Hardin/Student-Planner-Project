@@ -24,7 +24,7 @@ namespace StudentPlanner
         string todayDate = DateTime.Now.ToShortDateString();
         public List<Assignment> MyAssignments { get; set; } = new List<Assignment>();
         public List<Classinfo> MyClasses { get; set; } = new List<Classinfo>();
-        private readonly CalenderBackground background;
+        private CalenderBackground background;
 
         public MainWindow()
         {
@@ -250,7 +250,6 @@ namespace StudentPlanner
                         show += "\n";
                     }
                     MessageBox.Show(show);
-                    Calendar.SelectedDates.Clear();
                 }
                 else
                 {
@@ -266,6 +265,7 @@ namespace StudentPlanner
                         Calendar.SelectedDates.Clear();
                     }
                 }
+                Calendar.SelectedDates.Clear();
             }
         }
 
