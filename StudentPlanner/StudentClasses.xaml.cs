@@ -32,8 +32,7 @@ namespace StudentPlanner
 
         public void addclass_Click(object sender, RoutedEventArgs e) //reads what the user has typed into the textboxes and saves them to the list while adding them to the listview
         {
-            Classinfo course = new Classinfo();
-            course.Classdays = "";
+            Builder build = new Info_Builder();
 
             if (className.Text == "" || profName.Text == "")
             {
@@ -57,23 +56,20 @@ namespace StudentPlanner
             }
 
             string time = HourBox.Text + ":" + MinuteBox.Text + " " + TimeBox.Text;
+            string days = "";
 
             if (Monday.IsChecked ?? false)
-                course.Classdays += "M ";
+                days += "M ";
             if (Tuesday.IsChecked ?? false)
-                course.Classdays += "T ";
+                days += "T ";
             if (Wednesday.IsChecked ?? false)
-                course.Classdays += "W ";
+                days += "W ";
             if (Thursday.IsChecked ?? false)
-                course.Classdays += "R ";
+                days += "R ";
             if (Friday.IsChecked ?? false)
-                course.Classdays += "F ";
+                days += "F ";
 
-
-            course.Classname = className.Text;
-            course.Profname = profName.Text;
-            course.Profemail = profEmail.Text;
-            course.Time = time;
+            Classinfo course = build.Class_build(className.Text, profName.Text, profEmail.Text, time, days);
 
             viewClassList.Items.Add(course);
             MyClasses.Add(course);

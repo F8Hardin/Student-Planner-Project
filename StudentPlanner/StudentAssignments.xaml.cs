@@ -79,8 +79,7 @@ namespace StudentPlanner
 
         private void add_click(object sender, RoutedEventArgs e) //adds the assignments to the list and the listview
         {
-            Assignment homework = new Assignment();
-            homework.ClassName = Classbox.Text;
+            Builder build = new Info_Builder();
 
             if (Assigntitle.Text == "" || Classbox.Text == "")
             {
@@ -97,9 +96,7 @@ namespace StudentPlanner
 
             string date = monthbox.Text + "/" + daybox.Text + "/" + yearbox.Text;
 
-            homework.DueDate = date;
-            homework.AssignName = Assigntitle.Text;
-            homework.Notes = notes.Text;
+            Assignment homework = build.Assignment_build(Assigntitle.Text, Classbox.Text, date, notes.Text);
 
             Classbox.Text = "";
             Assigntitle.Text = "";

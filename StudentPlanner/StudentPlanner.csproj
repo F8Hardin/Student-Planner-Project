@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Assignment.cs" />
+    <Compile Include="Info_Builder.cs" />
+    <Compile Include="Builder.cs" />
     <Compile Include="CalenderBackground.cs" />
     <Compile Include="Classinfo.cs" />
     <Compile Include="StudentAssignments.xaml.cs">
