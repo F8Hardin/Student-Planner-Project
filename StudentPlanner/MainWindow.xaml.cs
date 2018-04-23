@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace StudentPlanner
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         string todayDate = DateTime.Now.ToShortDateString();
@@ -373,7 +370,7 @@ namespace StudentPlanner
             }
         }
 
-        private void CalenderOnDisplayDateChanged(object sender, CalendarDateChangedEventArgs calendarDateChangedEventArgs)//cite this!!
+        private void CalenderOnDisplayDateChanged(object sender, CalendarDateChangedEventArgs calendarDateChangedEventArgs) //this function comes is from Lars Pehrsson and his CalenderBackground class, see the class for details
         {
             Calendar.Background = background.GetBackground();
         }

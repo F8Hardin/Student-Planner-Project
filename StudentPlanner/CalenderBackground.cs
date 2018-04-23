@@ -1,4 +1,8 @@
-﻿using System;
+﻿//This class was made by Lars Pehrsson
+//The code was found here: https://www.codeproject.com/Tips/547627/Highlight-dates-on-a-WPF-Calendar
+//This is the license: https://www.codeproject.com/info/cpol10.aspx
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;

@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace StudentPlanner
 {
-    /// <summary>
-    /// Interaction logic for StudentClasses.xaml
-    /// </summary>
     public partial class StudentClasses : Window
     {
         public List<Classinfo> MyClasses { get; set; } = new List<Classinfo>(); //list to store the classes entered by the user, list should be saved to file so in the other xaml file it can be opened

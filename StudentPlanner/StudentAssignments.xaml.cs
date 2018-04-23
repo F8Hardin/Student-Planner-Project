@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace StudentPlanner
 {
-    /// <summary>
-    /// Interaction logic for StudentAssignments.xaml
-    /// </summary>
     public partial class StudentAssignments : Window
     {
         public List<Assignment> MyAssignments { get; set; } = new List<Assignment>(); //list to store assignments
