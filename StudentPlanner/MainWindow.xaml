@@ -13,17 +13,17 @@
             <ColumnDefinition Width="79*"/>
             <ColumnDefinition Width="494*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="close" Content="Close Window" HorizontalAlignment="Left" Margin="170,280,0,0" VerticalAlignment="Top" Width="150" Click="close_Click" Height="20" RenderTransformOrigin="0.555,3.12" BorderBrush="{x:Null}">
+        <Button x:Name="close" Content="Close Window" HorizontalAlignment="Left" Margin="170,344,0,0" VerticalAlignment="Top" Width="150" Click="close_Click" Height="59" RenderTransformOrigin="0.555,3.12" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="button.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
-        <Button x:Name="classes" Content="View Classes" HorizontalAlignment="Left" Margin="170,230,0,0" VerticalAlignment="Top" Width="150" Click="classes_Click" Height="20" BorderBrush="{x:Null}">
+        <Button x:Name="classes" Content="View Classes" HorizontalAlignment="Left" Margin="170,234,0,0" VerticalAlignment="Top" Width="150" Click="classes_Click" Height="50" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="button.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
-        <Button x:Name="assignments" Content="View Assignments" HorizontalAlignment="Left" Margin="170,255,0,0" VerticalAlignment="Top" Width="150" Click="assignments_click" Height="20" BorderBrush="{x:Null}">
+        <Button x:Name="assignments" Content="View Assignments" HorizontalAlignment="Left" Margin="170,289,0,0" VerticalAlignment="Top" Width="150" Click="assignments_click" Height="50" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="button.png" Stretch="UniformToFill"/>
             </Button.Background>
@@ -43,7 +43,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Viewbox Margin="-111,-81,123,-9.8" Grid.ColumnSpan="3">
+        <Viewbox Margin="-112,-79,124,-11.8" Grid.ColumnSpan="3">
             <Calendar x:Name="Calendar" RenderTransformOrigin="1400,-2400" Height="193" DisplayMode="Month" SelectedDatesChanged="date_clicked" Width="186">
                 <Calendar.RenderTransform>
                     <TransformGroup>

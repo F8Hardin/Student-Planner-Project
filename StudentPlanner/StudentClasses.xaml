@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StudentPlanner"
         mc:Ignorable="d"
         Title="StudentClasses" Height="375" Width="750">
-    <Grid Background="LightBlue">
+    <Grid Background="#FF30CCFF">
         <ListView x:Name="viewClassList" HorizontalAlignment="Left" Height="301" Margin="10,10,0,0" VerticalAlignment="Top" Width="530" ItemsSource="{Binding MyClasses}">
             <ListView.View>
                 <GridView>
@@ -18,8 +18,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="addclass" Content="Add Class" HorizontalAlignment="Left" Margin="545,316,0,0" VerticalAlignment="Top" Width="80" Click="addclass_Click" RenderTransformOrigin="-0.11,2.396"/>
-        <Button x:Name="save" Content="Save and Exit" HorizontalAlignment="Left" Margin="654,316,0,0" VerticalAlignment="Top" Width="80" Click="save_exit_Click" RenderTransformOrigin="-2.907,-7.042"/>
+        <Button x:Name="addclass" Content="Add Class" HorizontalAlignment="Left" Margin="545,316,0,0" VerticalAlignment="Top" Width="80" Click="addclass_Click" RenderTransformOrigin="-0.11,2.396" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="save" Content="Save and Exit" HorizontalAlignment="Left" Margin="654,316,0,0" VerticalAlignment="Top" Width="80" Click="save_exit_Click" RenderTransformOrigin="-2.907,-7.042" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
         <TextBox x:Name="className" HorizontalAlignment="Left" Height="23" Margin="545,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" />
         <TextBox x:Name="profName" HorizontalAlignment="Left" Height="23" Margin="545,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
         <TextBlock HorizontalAlignment="Left" Margin="545,58,0,0" TextWrapping="Wrap" Text="Enter Professor Name" VerticalAlignment="Top" FontSize="15"/>
@@ -34,9 +42,21 @@
         <ComboBox x:Name="MinuteBox" HorizontalAlignment="Left" Margin="612,185,0,0" VerticalAlignment="Top" Width="55"/>
         <TextBlock HorizontalAlignment="Left" Margin="612,169,0,0" TextWrapping="Wrap" Text="Minutes" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="607,185,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontSize="15" RenderTransformOrigin="0.5,0.5" Width="8"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="95,316,0,0" VerticalAlignment="Top" Width="75" Click="delete_Click" RenderTransformOrigin="-0.011,1.146"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="80" Click="edit_Click"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="175,316,0,0" VerticalAlignment="Top" Width="80" Click="save_Click"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="95,316,0,0" VerticalAlignment="Top" Width="75" Click="delete_Click" RenderTransformOrigin="-0.011,1.146" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="80" Click="edit_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="button.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="175,316,0,0" VerticalAlignment="Top" Width="80" Click="save_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
         <CheckBox x:Name="Monday" Content="Monday" HorizontalAlignment="Left" Margin="545,230,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.872,-0.868"/>
         <CheckBox x:Name="Tuesday" Content="Tuesday" HorizontalAlignment="Left" Margin="613,230,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.532,-0.026"/>
         <CheckBox x:Name ="Wednesday" Content="Wednesday" HorizontalAlignment="Left" Margin="545,250,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,-0.125"/>

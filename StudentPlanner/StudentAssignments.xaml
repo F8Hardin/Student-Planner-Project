@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StudentPlanner"
         mc:Ignorable="d"
         Title="StudentAssignments" Height="450" Width="685">
-    <Grid Background="LightBlue">
+    <Grid Background="#FF2CCCFF">
         <ComboBox x:Name="Classbox" HorizontalAlignment="Left" Margin="363,29,0,0" VerticalAlignment="Top" Width="120"/>
         <ListView x:Name="viewAssignmentList" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="348">
             <ListView.View>
@@ -17,7 +17,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="addassign" Content="Add Assignment" HorizontalAlignment="Left" Margin="363,341,0,0" VerticalAlignment="Top" Width="127" Click="add_click" Height="20"/>
+        <Button x:Name="addassign" Content="Add Assignment" HorizontalAlignment="Left" Margin="363,341,0,0" VerticalAlignment="Top" Width="127" Click="add_click" Height="20" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="button.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
         <TextBlock HorizontalAlignment="Left" Margin="363,9,0,0" TextWrapping="Wrap" Text="Select Course" FontSize="15" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="363,56,0,0" TextWrapping="Wrap" Text="Assignment Title" FontSize="15" VerticalAlignment="Top"/>
         <TextBox x:Name="Assigntitle" HorizontalAlignment="Left" Height="23" Margin="363,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
@@ -28,8 +32,16 @@
         <TextBlock HorizontalAlignment="Left" Margin="382,156,0,0" TextWrapping="Wrap" Text="Day" VerticalAlignment="Top" RenderTransformOrigin="3.213,0.621"/>
         <TextBlock HorizontalAlignment="Left" Margin="368,129,0,0" TextWrapping="Wrap" Text="Month" VerticalAlignment="Top" RenderTransformOrigin="0.682,-6.473"/>
         <TextBlock HorizontalAlignment="Left" Margin="381,184,0,0" TextWrapping="Wrap" Text="Year" VerticalAlignment="Top"/>
-        <Button x:Name="save_exit" Content="Save and Exit" HorizontalAlignment="Left" Margin="495,391,0,0" VerticalAlignment="Top" Width="167" Click="save_exit_Click"/>
-        <Button x:Name="view" Content="View Assignment Info" HorizontalAlignment="Left" Margin="363,366,0,0" VerticalAlignment="Top" Width="127" Height="20" Click="view_Click"/>
+        <Button x:Name="save_exit" Content="Save and Exit" HorizontalAlignment="Left" Margin="495,391,0,0" VerticalAlignment="Top" Width="167" Click="save_exit_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="view" Content="View Assignment Info" HorizontalAlignment="Left" Margin="363,366,0,0" VerticalAlignment="Top" Width="127" Height="20" Click="view_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="button.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
         <TextBlock HorizontalAlignment="Left" Margin="363,212,0,0" TextWrapping="Wrap" Text="Assignment Notes" VerticalAlignment="Top" FontSize="15"/>
         <TextBox x:Name="notes" HorizontalAlignment="Left" Height="100" Margin="363,237,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127"/>
         <ListView x:Name="viewCompletedAssignments" HorizontalAlignment="Left" Height="327" Margin="495,10,0,0" VerticalAlignment="Top" Width="167">
@@ -39,9 +51,25 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Mark As Complete" HorizontalAlignment="Left" Margin="495,342,0,0" VerticalAlignment="Top" Width="167" Click="complete_Click"/>
-        <Button Content="Mark As Incomplete" HorizontalAlignment="Left" Margin="495,367,0,0" VerticalAlignment="Top" Width="167" Click="incomplete_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="363,391,0,0" VerticalAlignment="Top" Width="61" Click="edit_Click"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="429,391,0,0" VerticalAlignment="Top" Width="61" Click="delete_Click"/>
+        <Button Content="Mark As Complete" HorizontalAlignment="Left" Margin="495,342,0,0" VerticalAlignment="Top" Width="167" Click="complete_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Mark As Incomplete" HorizontalAlignment="Left" Margin="495,367,0,0" VerticalAlignment="Top" Width="167" Click="incomplete_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="363,391,0,0" VerticalAlignment="Top" Width="61" Click="edit_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="429,391,0,0" VerticalAlignment="Top" Width="61" Click="delete_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
